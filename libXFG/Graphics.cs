@@ -1,4 +1,4 @@
-﻿using XFG.Backend;
+﻿using XFG.Platform;
 using XFG.OpenGL;
 using System;
 using System.Collections.Generic;
@@ -9,10 +9,8 @@ namespace XFG
 {
     public delegate void OnResizeDelegate(int width, int height);
 
-
     public static class Graphics
     {
-        
         static Graphics()
         {
         }
@@ -25,9 +23,8 @@ namespace XFG
             add { Platform.OnResized += value; }
             remove { Platform.OnResized -= value; }
         }
-
-        private static IGraphicsPlatform Platform;
-       internal static void SetPlatform(IGraphicsPlatform graphics)
+        private static IDisplay Platform;
+        internal static void SetPlatform(IDisplay graphics)
         {
             Platform = graphics;
         }

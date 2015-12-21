@@ -22,7 +22,7 @@ using GLushort = System.UInt16;
 using GLvoid = System.IntPtr;
 using XFG.OpenGL;
 
-namespace XFG.Backend.Windows
+namespace XFG.Platform.Windows
 {
     internal static partial class Wgl 
     {
@@ -30,9 +30,7 @@ namespace XFG.Backend.Windows
         internal delegate IntPtr WndProc(IntPtr hWnd, WM msg, IntPtr wParam, IntPtr lParam);
 
 
-
         private const string KERN_DLL = "Kernel32.dll";
-
 
         [DllImport(KERN_DLL, EntryPoint = "LoadLibrary")]
         internal static extern IntPtr LoadLibrary(string lpFileName);
@@ -105,6 +103,12 @@ namespace XFG.Backend.Windows
 
 
         private const string USER_DLL = "user32.dll";
+        [DllImport(USER_DLL)]
+        internal static extern int GetMessage(out MSG lpMsg, IntPtr hWnd, uint wMsgFilterMin, uint wMsgFilterMax);
+        [DllImport(USER_DLL)]
+        internal static extern bool TranslateMessage([In] ref MSG lpMsg);
+        [DllImport(USER_DLL)]
+        internal static extern IntPtr DispatchMessage([In] ref MSG lpmsg);
 
         [DllImport(USER_DLL, EntryPoint = "GetDC", ExactSpelling = true)]
         internal static extern IntPtr GetDC(IntPtr hwnd);
@@ -126,6 +130,9 @@ namespace XFG.Backend.Windows
 
         [DllImport(USER_DLL, CharSet = CharSet.Unicode, SetLastError = true)]
         internal static extern bool DestroyWindow(IntPtr hwnd);
+
+        [DllImport(USER_DLL, CharSet = CharSet.Unicode, SetLastError = true)]
+        internal static extern bool SetWindowText(IntPtr hwnd,string text);
 
         [DllImport(USER_DLL, EntryPoint = "CreateWindowEx", SetLastError = true, CharSet = CharSet.Unicode)]
         internal static extern IntPtr CreateWindowEx(
@@ -342,4 +349,20 @@ namespace XFG.Backend.Windows
         WS_VISIBLE = 0x10000000,
         WS_VSCROLL = 0x200000
     }
+    [StructLayout(LayoutKind.Sequential)]
+    public struct MSG
+    {
+        public IntPtr hwnd;
+        public UInt32 message;
+        public UIntPtr wParam;
+        public UIntPtr lParam;
+        public UInt32 time;
+        public POINT pt;
+    }
+    [StructLayout(LayoutKind.Sequential)]
+    public struct POINT
+    {
+        public Int32 x;
+        public Int32 Y;
+    }  
 }

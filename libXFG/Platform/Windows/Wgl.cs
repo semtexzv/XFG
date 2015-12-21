@@ -21,7 +21,7 @@ using GLushort = System.UInt16;
 using GLvoid = System.IntPtr;
 using System.Collections.Generic;
 
-namespace XFG.Backend.Windows
+namespace XFG.Platform.Windows
 {
     internal static partial class Wgl
     {

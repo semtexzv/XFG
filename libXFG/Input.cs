@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using XFG.Backend;
+using XFG.Platform;
 using XFG.MathUtils;
 
 namespace XFG
@@ -17,8 +17,8 @@ namespace XFG
 
     public static class Input
     {
-        private static IInputPlatform Platform; 
-        internal static void SetPlatform(IInputPlatform graphics)
+        private static IDisplay Platform; 
+        internal static void SetPlatform(IDisplay graphics)
         {
             Platform = graphics;
         }

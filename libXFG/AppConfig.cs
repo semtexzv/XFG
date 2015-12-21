@@ -11,5 +11,6 @@ namespace XFG
         public int Width;
         public int Height;
         public bool Fullscreen;
+        public string Title;
     }
 }

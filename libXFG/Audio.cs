@@ -1,5 +1,5 @@
 ﻿using XFG.Audiolib;
-using XFG.Backend;
+using XFG.Platform;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +13,8 @@ namespace XFG
     /// </summary>
    public static class Audio
     {
-        private static IAudioPlatform Platform;
-        internal static void SetPlatform(IAudioPlatform graphics)
+        private static IAudio Platform;
+        internal static void SetPlatform(IAudio graphics)
         {
             Platform = graphics;
         }

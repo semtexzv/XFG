@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using XFG;
 using XFG.OpenGL;
 
-namespace XFG.Backend.Windows
+namespace XFG.Platform.Windows
 {
     internal class WglContext : GLContext
     {

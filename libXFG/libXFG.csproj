@@ -51,14 +51,16 @@
     <Compile Include="Audiolib\IAudioDevice.cs" />
     <Compile Include="Audiolib\IMusic.cs" />
     <Compile Include="Audiolib\ISound.cs" />
-    <Compile Include="Backend\AudioPlatform.cs" />
-    <Compile Include="Backend\GraphicsPlatform.cs" />
-    <Compile Include="Backend\InputPlatform.cs" />
-    <Compile Include="Backend\Windows\Wgl.cs" />
-    <Compile Include="Backend\Windows\WglConsts.cs" />
-    <Compile Include="Backend\Windows\WglContext.cs" />
-    <Compile Include="Backend\Windows\WglWinapi.cs" />
-    <Compile Include="Backend\Windows\WglWindow.cs" />
+    <Compile Include="Platform\Dummy\DummyPlatform.cs" />
+    <Compile Include="Platform\IAudio.cs" />
+    <Compile Include="Platform\IDisplay.cs" />
+    <Compile Include="Platform\IPlatform.cs" />
+    <Compile Include="Platform\Windows\Wgl.cs" />
+    <Compile Include="Platform\Windows\WglConsts.cs" />
+    <Compile Include="Platform\Windows\WglContext.cs" />
+    <Compile Include="Platform\Windows\WglDisplay.cs" />
+    <Compile Include="Platform\Windows\WglPlatform.cs" />
+    <Compile Include="Platform\Windows\WglWinapi.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="DisplayFormat.cs" />
     <Compile Include="Gfx\2D\Animation.cs" />
@@ -76,7 +78,6 @@
     <Compile Include="Gfx\VertexBuffer.cs" />
     <Compile Include="Graphics.cs" />
     <Compile Include="Input.cs" />
-    <Compile Include="Backend\IWindow.cs" />
     <Compile Include="Keys.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="MathUtils\Math.cs" />
@@ -89,11 +90,11 @@
     <Compile Include="OpenGL\GL.cs" />
     <Compile Include="OpenGL\GLContext.cs" />
     <Compile Include="OpenGL\SyncType.cs" />
+    <Compile Include="Platform\Windows\WinAudio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\Crc32.cs" />
     <Compile Include="Utils\Extensions.cs" />
     <Compile Include="Utils\PNG.cs" />
-    <Compile Include="Window.cs" />
     <Compile Include="XFG.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

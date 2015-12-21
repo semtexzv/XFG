@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XFG.Backend.Windows
+namespace XFG.Platform.Windows
 {
     internal static partial class Wgl
     {

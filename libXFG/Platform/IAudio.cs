@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XFG.Backend
+namespace XFG.Platform
 {
     /// <summary>
     /// Represents audio platform, will be created before application is initialized
     /// and will be disposed of after game is closed
     /// </summary>
-    public interface IAudioPlatform : IDisposable
+    public interface IAudio : IDisposable
     { 
         /// <summary>
         /// Suspends all sounds, could be thought as mute button, 
