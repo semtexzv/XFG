@@ -2,131 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace XFG.Platform.Windows
 {
-    internal static partial class Wgl
-    {
-        internal const int CONTEXT_DEBUG_BIT_ARB = 0x00000001;
-        internal const int CONTEXT_FORWARD_COMPATIBLE_BIT_ARB = 0x00000002;
-        internal const int CONTEXT_ES2_PROFILE_BIT_EXT = 0x00000004;
-
-        internal const int CONTEXT_MAJOR_VERSION_ARB = 0x2091;
-        internal const int CONTEXT_MINOR_VERSION_ARB = 0x2092;
-        internal const int CONTEXT_LAYER_PLANE_ARB = 0x2093;
-        internal const int CONTEXT_FLAGS_ARB = 0x2094;
-        internal const int CONTEXT_PROFILE_MASK_ARB = 0x9126;
-        internal const int CONTEXT_CORE_PROFILE_BIT_ARB = 0x00000001;
-        internal const int CONTEXT_COMPATIBILITY_PROFILE_BIT_ARB = 0x00000002;
-        internal const int ERROR_INVALID_VERSION_ARB = 0x2095;
-
-        internal const int NUMBER_PIXEL_FORMATS_ARB = 0x2000;
-        internal const int DRAW_TO_WINDOW_ARB = 0x2001;
-        internal const int DRAW_TO_BITMAP_ARB = 0x2002;
-        internal const int ACCELERATION_ARB = 0x2003;
-        internal const int NEED_PALETTE_ARB = 0x2004;
-        internal const int NEED_SYSTEM_PALETTE_ARB = 0x2005;
-        internal const int SWAP_LAYER_BUFFERS_ARB = 0x2006;
-        internal const int SWAP_METHOD_ARB = 0x2007;
-        internal const int NUMBER_OVERLAYS_ARB = 0x2008;
-        internal const int NUMBER_UNDERLAYS_ARB = 0x2009;
-        internal const int TRANSPARENT_ARB = 0x200A;
-        internal const int TRANSPARENT_RED_VALUE_ARB = 0x2037;
-        internal const int TRANSPARENT_GREEN_VALUE_ARB = 0x2038;
-        internal const int TRANSPARENT_BLUE_VALUE_ARB = 0x2039;
-        internal const int TRANSPARENT_ALPHA_VALUE_ARB = 0x203A;
-        internal const int TRANSPARENT_INDEX_VALUE_ARB = 0x203B;
-        internal const int SHARE_DEPTH_ARB = 0x200C;
-        internal const int SHARE_STENCIL_ARB = 0x200D;
-        internal const int SHARE_ACCUM_ARB = 0x200E;
-        internal const int SUPPORT_GDI_ARB = 0x200F;
-        internal const int SUPPORT_OPENGL_ARB = 0x2010;
-        internal const int DOUBLE_BUFFER_ARB = 0x2011;
-        internal const int STEREO_ARB = 0x2012;
-        internal const int PIXEL_TYPE_ARB = 0x2013;
-        internal const int COLOR_BITS_ARB = 0x2014;
-        internal const int RED_BITS_ARB = 0x2015;
-        internal const int RED_SHIFT_ARB = 0x2016;
-        internal const int GREEN_BITS_ARB = 0x2017;
-        internal const int GREEN_SHIFT_ARB = 0x2018;
-        internal const int BLUE_BITS_ARB = 0x2019;
-        internal const int BLUE_SHIFT_ARB = 0x201A;
-        internal const int ALPHA_BITS_ARB = 0x201B;
-        internal const int ALPHA_SHIFT_ARB = 0x201C;
-        internal const int ACCUM_BITS_ARB = 0x201D;
-        internal const int ACCUM_RED_BITS_ARB = 0x201E;
-        internal const int ACCUM_GREEN_BITS_ARB = 0x201F;
-        internal const int ACCUM_BLUE_BITS_ARB = 0x2020;
-        internal const int ACCUM_ALPHA_BITS_ARB = 0x2021;
-        internal const int DEPTH_BITS_ARB = 0x2022;
-        internal const int STENCIL_BITS_ARB = 0x2023;
-        internal const int AUX_BUFFERS_ARB = 0x2024;
-        internal const int NO_ACCELERATION_ARB = 0x2025;
-        internal const int GENERIC_ACCELERATION_ARB = 0x2026;
-        internal const int FULL_ACCELERATION_ARB = 0x2027;
-        internal const int SWAP_EXCHANGE_ARB = 0x2028;
-        internal const int SWAP_COPY_ARB = 0x2029;
-        internal const int SWAP_UNDEFINED_ARB = 0x202A;
-        internal const int TYPE_RGBA_ARB = 0x202B;
-        internal const int TYPE_COLORINDEX_ARB = 0x202C;
-
-        internal const int NUMBER_PIXEL_FORMATS_EXT = 0x2000;
-        internal const int DRAW_TO_WINDOW_EXT = 0x2001;
-        internal const int DRAW_TO_BITMAP_EXT = 0x2002;
-        internal const int ACCELERATION_EXT = 0x2003;
-        internal const int NEED_PALETTE_EXT = 0x2004;
-        internal const int NEED_SYSTEM_PALETTE_EXT = 0x2005;
-        internal const int SWAP_LAYER_BUFFERS_EXT = 0x2006;
-        internal const int SWAP_METHOD_EXT = 0x2007;
-        internal const int NUMBER_OVERLAYS_EXT = 0x2008;
-        internal const int NUMBER_UNDERLAYS_EXT = 0x2009;
-        internal const int TRANSPARENT_EXT = 0x200A;
-        internal const int TRANSPARENT_VALUE_EXT = 0x200B;
-        internal const int SHARE_DEPTH_EXT = 0x200C;
-        internal const int SHARE_STENCIL_EXT = 0x200D;
-        internal const int SHARE_ACCUM_EXT = 0x200E;
-        internal const int SUPPORT_GDI_EXT = 0x200F;
-        internal const int SUPPORT_OPENGL_EXT = 0x2010;
-        internal const int DOUBLE_BUFFER_EXT = 0x2011;
-        internal const int STEREO_EXT = 0x2012;
-        internal const int PIXEL_TYPE_EXT = 0x2013;
-        internal const int COLOR_BITS_EXT = 0x2014;
-        internal const int RED_BITS_EXT = 0x2015;
-        internal const int RED_SHIFT_EXT = 0x2016;
-        internal const int GREEN_BITS_EXT = 0x2017;
-        internal const int GREEN_SHIFT_EXT = 0x2018;
-        internal const int BLUE_BITS_EXT = 0x2019;
-        internal const int BLUE_SHIFT_EXT = 0x201A;
-        internal const int ALPHA_BITS_EXT = 0x201B;
-        internal const int ALPHA_SHIFT_EXT = 0x201C;
-        internal const int ACCUM_BITS_EXT = 0x201D;
-        internal const int ACCUM_RED_BITS_EXT = 0x201E;
-        internal const int ACCUM_GREEN_BITS_EXT = 0x201F;
-        internal const int ACCUM_BLUE_BITS_EXT = 0x2020;
-        internal const int ACCUM_ALPHA_BITS_EXT = 0x2021;
-        internal const int DEPTH_BITS_EXT = 0x2022;
-        internal const int STENCIL_BITS_EXT = 0x2023;
-        internal const int AUX_BUFFERS_EXT = 0x2024;
-        internal const int NO_ACCELERATION_EXT = 0x2025;
-        internal const int GENERIC_ACCELERATION_EXT = 0x2026;
-        internal const int FULL_ACCELERATION_EXT = 0x2027;
-        internal const int SWAP_EXCHANGE_EXT = 0x2028;
-        internal const int SWAP_COPY_EXT = 0x2029;
-        internal const int SWAP_UNDEFINED_EXT = 0x202A;
-        internal const int TYPE_RGBA_EXT = 0x202B;
-        internal const int TYPE_COLORINDEX_EXT = 0x202C;
-        internal const int SAMPLE_BUFFERS_ARB = 0x2041;
-        internal const int SAMPLES_ARB = 0x2042;
-
-    }
-
     /// <summary>
     /// Windows Messages
     /// Defined in winuser.h from Windows SDK v6.1
     /// Documentation pulled from MSDN.
     /// </summary>
-    public enum WM : uint
+    internal enum WM : uint
     {
         /// <summary>
         /// The WM_NULL message performs no operation. An application sends the WM_NULL message if it wants to post a message that the recipient window will ignore.
@@ -1085,4 +969,526 @@ namespace XFG.Platform.Windows
         /// </summary>
         HSHELL_WINDOWREPLACED = 13
     }
+
+    /// <summary>
+    /// Window Styles.
+    /// The following styles can be specified wherever a window style is required. After the control has been created, these styles cannot be modified, except as noted.
+    /// </summary>
+    [Flags()]
+    internal enum WindowStyles : uint
+    {
+        /// <summary>The window has a thin-line border.</summary>
+        WS_BORDER = 0x800000,
+
+        /// <summary>The window has a title bar (includes the WS_BORDER style).</summary>
+        WS_CAPTION = 0xc00000,
+
+        /// <summary>The window is a child window. A window with this style cannot have a menu bar. This style cannot be used with the WS_POPUP style.</summary>
+        WS_CHILD = 0x40000000,
+
+        /// <summary>Excludes the area occupied by child windows when drawing occurs within the parent window. This style is used when creating the parent window.</summary>
+        WS_CLIPCHILDREN = 0x2000000,
+
+        /// <summary>
+        /// Clips child windows relative to each other; that is, when a particular child window receives a WM_PAINT message, the WS_CLIPSIBLINGS style clips all other overlapping child windows out of the region of the child window to be updated.
+        /// If WS_CLIPSIBLINGS is not specified and child windows overlap, it is possible, when drawing within the client area of a child window, to draw within the client area of a neighboring child window.
+        /// </summary>
+        WS_CLIPSIBLINGS = 0x4000000,
+
+        /// <summary>The window is initially disabled. A disabled window cannot receive input from the user. To change this after a window has been created, use the EnableWindow function.</summary>
+        WS_DISABLED = 0x8000000,
+
+        /// <summary>The window has a border of a style typically used with dialog boxes. A window with this style cannot have a title bar.</summary>
+        WS_DLGFRAME = 0x400000,
+
+        /// <summary>
+        /// The window is the first control of a group of controls. The group consists of this first control and all controls defined after it, up to the next control with the WS_GROUP style.
+        /// The first control in each group usually has the WS_TABSTOP style so that the user can move from group to group. The user can subsequently change the keyboard focus from one control in the group to the next control in the group by using the direction keys.
+        /// You can turn this style on and off to change dialog box navigation. To change this style after a window has been created, use the SetWindowLong function.
+        /// </summary>
+        WS_GROUP = 0x20000,
+
+        /// <summary>The window has a horizontal scroll bar.</summary>
+        WS_HSCROLL = 0x100000,
+
+        /// <summary>The window is initially maximized.</summary>
+        WS_MAXIMIZE = 0x1000000,
+
+        /// <summary>The window has a maximize button. Cannot be combined with the WS_EX_CONTEXTHELP style. The WS_SYSMENU style must also be specified.</summary>
+        WS_MAXIMIZEBOX = 0x10000,
+
+        /// <summary>The window is initially minimized.</summary>
+        WS_MINIMIZE = 0x20000000,
+
+        /// <summary>The window has a minimize button. Cannot be combined with the WS_EX_CONTEXTHELP style. The WS_SYSMENU style must also be specified.</summary>
+        WS_MINIMIZEBOX = 0x20000,
+
+        /// <summary>The window is an overlapped window. An overlapped window has a title bar and a border.</summary>
+        WS_OVERLAPPED = 0x0,
+
+        /// <summary>The window is an overlapped window.</summary>
+        WS_OVERLAPPEDWINDOW = WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_SIZEFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX,
+
+        /// <summary>The window is a pop-up window. This style cannot be used with the WS_CHILD style.</summary>
+        WS_POPUP = 0x80000000u,
+
+        /// <summary>The window is a pop-up window. The WS_CAPTION and WS_POPUPWINDOW styles must be combined to make the window menu visible.</summary>
+        WS_POPUPWINDOW = WS_POPUP | WS_BORDER | WS_SYSMENU,
+
+        /// <summary>The window has a sizing border.</summary>
+        WS_SIZEFRAME = 0x40000,
+
+        /// <summary>The window has a window menu on its title bar. The WS_CAPTION style must also be specified.</summary>
+        WS_SYSMENU = 0x80000,
+
+        /// <summary>
+        /// The window is a control that can receive the keyboard focus when the user presses the TAB key.
+        /// Pressing the TAB key changes the keyboard focus to the next control with the WS_TABSTOP style.  
+        /// You can turn this style on and off to change dialog box navigation. To change this style after a window has been created, use the SetWindowLong function.
+        /// For user-created windows and modeless dialogs to work with tab stops, alter the message loop to call the IsDialogMessage function.
+        /// </summary>
+        WS_TABSTOP = 0x10000,
+
+        /// <summary>The window is initially visible. This style can be turned on and off by using the ShowWindow or SetWindowPos function.</summary>
+        WS_VISIBLE = 0x10000000,
+
+        /// <summary>The window has a vertical scroll bar.</summary>
+        WS_VSCROLL = 0x200000
+    }
+    [Flags]
+    public enum WindowStylesEx : uint
+    {
+        /// <summary>Specifies a window that accepts drag-drop files.</summary>
+        WS_EX_ACCEPTFILES = 0x00000010,
+
+        /// <summary>Forces a top-level window onto the taskbar when the window is visible.</summary>
+        WS_EX_APPWINDOW = 0x00040000,
+
+        /// <summary>Specifies a window that has a border with a sunken edge.</summary>
+        WS_EX_CLIENTEDGE = 0x00000200,
+
+        /// <summary>
+        /// Specifies a window that paints all descendants in bottom-to-top painting order using double-buffering.
+        /// This cannot be used if the window has a class style of either CS_OWNDC or CS_CLASSDC. This style is not supported in Windows 2000.
+        /// </summary>
+        /// <remarks>
+        /// With WS_EX_COMPOSITED set, all descendants of a window get bottom-to-top painting order using double-buffering.
+        /// Bottom-to-top painting order allows a descendent window to have translucency (alpha) and transparency (color-key) effects,
+        /// but only if the descendent window also has the WS_EX_TRANSPARENT bit set.
+        /// Double-buffering allows the window and its descendents to be painted without flicker.
+        /// </remarks>
+        WS_EX_COMPOSITED = 0x02000000,
+
+        /// <summary>
+        /// Specifies a window that includes a question mark in the title bar. When the user clicks the question mark,
+        /// the cursor changes to a question mark with a pointer. If the user then clicks a child window, the child receives a WM_HELP message.
+        /// The child window should pass the message to the parent window procedure, which should call the WinHelp function using the HELP_WM_HELP command.
+        /// The Help application displays a pop-up window that typically contains help for the child window.
+        /// WS_EX_CONTEXTHELP cannot be used with the WS_MAXIMIZEBOX or WS_MINIMIZEBOX styles.
+        /// </summary>
+        WS_EX_CONTEXTHELP = 0x00000400,
+
+        /// <summary>
+        /// Specifies a window which contains child windows that should take part in dialog box navigation.
+        /// If this style is specified, the dialog manager recurses into children of this window when performing navigation operations
+        /// such as handling the TAB key, an arrow key, or a keyboard mnemonic.
+        /// </summary>
+        WS_EX_CONTROLPARENT = 0x00010000,
+
+        /// <summary>Specifies a window that has a double border.</summary>
+        WS_EX_DLGMODALFRAME = 0x00000001,
+
+        /// <summary>
+        /// Specifies a window that is a layered window.
+        /// This cannot be used for child windows or if the window has a class style of either CS_OWNDC or CS_CLASSDC.
+        /// </summary>
+        WS_EX_LAYERED = 0x00080000,
+
+        /// <summary>
+        /// Specifies a window with the horizontal origin on the right edge. Increasing horizontal values advance to the left.
+        /// The shell language must support reading-order alignment for this to take effect.
+        /// </summary>
+        WS_EX_LAYOUTRTL = 0x00400000,
+
+        /// <summary>Specifies a window that has generic left-aligned properties. This is the default.</summary>
+        WS_EX_LEFT = 0x00000000,
+
+        /// <summary>
+        /// Specifies a window with the vertical scroll bar (if present) to the left of the client area.
+        /// The shell language must support reading-order alignment for this to take effect.
+        /// </summary>
+        WS_EX_LEFTSCROLLBAR = 0x00004000,
+
+        /// <summary>
+        /// Specifies a window that displays text using left-to-right reading-order properties. This is the default.
+        /// </summary>
+        WS_EX_LTRREADING = 0x00000000,
+
+        /// <summary>
+        /// Specifies a multiple-document interface (MDI) child window.
+        /// </summary>
+        WS_EX_MDICHILD = 0x00000040,
+
+        /// <summary>
+        /// Specifies a top-level window created with this style does not become the foreground window when the user clicks it.
+        /// The system does not bring this window to the foreground when the user minimizes or closes the foreground window.
+        /// The window does not appear on the taskbar by default. To force the window to appear on the taskbar, use the WS_EX_APPWINDOW style.
+        /// To activate the window, use the SetActiveWindow or SetForegroundWindow function.
+        /// </summary>
+        WS_EX_NOACTIVATE = 0x08000000,
+
+        /// <summary>
+        /// Specifies a window which does not pass its window layout to its child windows.
+        /// </summary>
+        WS_EX_NOINHERITLAYOUT = 0x00100000,
+
+        /// <summary>
+        /// Specifies that a child window created with this style does not send the WM_PARENTNOTIFY message to its parent window when it is created or destroyed.
+        /// </summary>
+        WS_EX_NOPARENTNOTIFY = 0x00000004,
+
+        /// <summary>Specifies an overlapped window.</summary>
+        WS_EX_OVERLAPPEDWINDOW = WS_EX_WINDOWEDGE | WS_EX_CLIENTEDGE,
+
+        /// <summary>Specifies a palette window, which is a modeless dialog box that presents an array of commands.</summary>
+        WS_EX_PALETTEWINDOW = WS_EX_WINDOWEDGE | WS_EX_TOOLWINDOW | WS_EX_TOPMOST,
+
+        /// <summary>
+        /// Specifies a window that has generic "right-aligned" properties. This depends on the window class.
+        /// The shell language must support reading-order alignment for this to take effect.
+        /// Using the WS_EX_RIGHT style has the same effect as using the SS_RIGHT (static), ES_RIGHT (edit), and BS_RIGHT/BS_RIGHTBUTTON (button) control styles.
+        /// </summary>
+        WS_EX_RIGHT = 0x00001000,
+
+        /// <summary>Specifies a window with the vertical scroll bar (if present) to the right of the client area. This is the default.</summary>
+        WS_EX_RIGHTSCROLLBAR = 0x00000000,
+
+        /// <summary>
+        /// Specifies a window that displays text using right-to-left reading-order properties.
+        /// The shell language must support reading-order alignment for this to take effect.
+        /// </summary>
+        WS_EX_RTLREADING = 0x00002000,
+
+        /// <summary>Specifies a window with a three-dimensional border style intended to be used for items that do not accept user input.</summary>
+        WS_EX_STATICEDGE = 0x00020000,
+
+        /// <summary>
+        /// Specifies a window that is intended to be used as a floating toolbar.
+        /// A tool window has a title bar that is shorter than a normal title bar, and the window title is drawn using a smaller font.
+        /// A tool window does not appear in the taskbar or in the dialog that appears when the user presses ALT+TAB.
+        /// If a tool window has a system menu, its icon is not displayed on the title bar.
+        /// However, you can display the system menu by right-clicking or by typing ALT+SPACE.
+        /// </summary>
+        WS_EX_TOOLWINDOW = 0x00000080,
+
+        /// <summary>
+        /// Specifies a window that should be placed above all non-topmost windows and should stay above them, even when the window is deactivated.
+        /// To add or remove this style, use the SetWindowPos function.
+        /// </summary>
+        WS_EX_TOPMOST = 0x00000008,
+
+        /// <summary>
+        /// Specifies a window that should not be painted until siblings beneath the window (that were created by the same thread) have been painted.
+        /// The window appears transparent because the bits of underlying sibling windows have already been painted.
+        /// To achieve transparency without these restrictions, use the SetWindowRgn function.
+        /// </summary>
+        WS_EX_TRANSPARENT = 0x00000020,
+
+        /// <summary>Specifies a window that has a border with a raised edge.</summary>
+        WS_EX_WINDOWEDGE = 0x00000100
+    }
+    [Flags]
+    internal enum ClassStyles : uint
+    {
+        /// <summary>Aligns the window's client area on a byte boundary (in the x direction). This style affects the width of the window and its horizontal placement on the display.</summary>
+        ByteAlignClient = 0x1000,
+
+        /// <summary>Aligns the window on a byte boundary (in the x direction). This style affects the width of the window and its horizontal placement on the display.</summary>
+        ByteAlignWindow = 0x2000,
+
+        /// <summary>
+        /// Allocates one device context to be shared by all windows in the class.
+        /// Because window classes are process specific, it is possible for multiple threads of an application to create a window of the same class.
+        /// It is also possible for the threads to attempt to use the device context simultaneously. When this happens, the system allows only one thread to successfully finish its drawing operation.
+        /// </summary>
+        ClassDC = 0x40,
+
+        /// <summary>Sends a double-click message to the window procedure when the user double-clicks the mouse while the cursor is within a window belonging to the class.</summary>
+        DoubleClicks = 0x8,
+
+        /// <summary>
+        /// Enables the drop shadow effect on a window. The effect is turned on and off through SPI_SETDROPSHADOW.
+        /// Typically, this is enabled for small, short-lived windows such as menus to emphasize their Z order relationship to other windows.
+        /// </summary>
+        DropShadow = 0x20000,
+
+        /// <summary>Indicates that the window class is an application global class. For more information, see the "Application Global Classes" section of About Window Classes.</summary>
+        GlobalClass = 0x4000,
+
+        /// <summary>Redraws the entire window if a movement or size adjustment changes the width of the client area.</summary>
+        HorizontalRedraw = 0x2,
+
+        /// <summary>Disables Close on the window menu.</summary>
+        NoClose = 0x200,
+
+        /// <summary>Allocates a unique device context for each window in the class.</summary>
+        OwnDC = 0x20,
+
+        /// <summary>
+        /// Sets the clipping rectangle of the child window to that of the parent window so that the child can draw on the parent.
+        /// A window with the CS_PARENTDC style bit receives a regular device context from the system's cache of device contexts.
+        /// It does not give the child the parent's device context or device context settings. Specifying CS_PARENTDC enhances an application's performance.
+        /// </summary>
+        ParentDC = 0x80,
+
+        /// <summary>
+        /// Saves, as a bitmap, the portion of the screen image obscured by a window of this class.
+        /// When the window is removed, the system uses the saved bitmap to restore the screen image, including other windows that were obscured.
+        /// Therefore, the system does not send WM_PAINT messages to windows that were obscured if the memory used by the bitmap has not been discarded and if other screen actions have not invalidated the stored image.
+        /// This style is useful for small windows (for example, menus or dialog boxes) that are displayed briefly and then removed before other screen activity takes place.
+        /// This style increases the time required to display the window, because the system must first allocate memory to store the bitmap.
+        /// </summary>
+        SaveBits = 0x800,
+
+        /// <summary>Redraws the entire window if a movement or size adjustment changes the height of the client area.</summary>
+        VerticalRedraw = 0x1
+    }
+    [Flags()]
+    internal enum DM : int
+    {
+        Orientation = 0x1,
+        PaperSize = 0x2,
+        PaperLength = 0x4,
+        PaperWidth = 0x8,
+        Scale = 0x10,
+        Position = 0x20,
+        NUP = 0x40,
+        DisplayOrientation = 0x80,
+        Copies = 0x100,
+        DefaultSource = 0x200,
+        PrintQuality = 0x400,
+        Color = 0x800,
+        Duplex = 0x1000,
+        YResolution = 0x2000,
+        TTOption = 0x4000,
+        Collate = 0x8000,
+        FormName = 0x10000,
+        LogPixels = 0x20000,
+        BitsPerPixel = 0x40000,
+        PelsWidth = 0x80000,
+        PelsHeight = 0x100000,
+        DisplayFlags = 0x200000,
+        DisplayFrequency = 0x400000,
+        ICMMethod = 0x800000,
+        ICMIntent = 0x1000000,
+        MediaType = 0x2000000,
+        DitherType = 0x4000000,
+        PanningWidth = 0x8000000,
+        PanningHeight = 0x10000000,
+        DisplayFixedOutput = 0x20000000
+    }
+
+    /// <summary>
+    /// A set of bit flags that specify properties of the pixel buffer,
+    /// The properties are generally not mutually exclusive; you can set
+    /// any combination of bit flags, with the exceptions noted.
+    /// </summary>
+    [Flags]
+    internal enum PFDBitFlag
+    {
+        /// <summary>
+        /// The buffer can draw to a window or device surface
+        /// </summary>
+        PFD_DRAW_TO_WINDOW = 4,
+        /// <summary>
+        /// The buffer can draw to a memory bitmap
+        /// </summary>
+        PFD_DRAW_TO_BITMAP = 8,
+        /// <summary>
+        /// The buffer supports GDI drawing. This flag and 
+        /// PFD_DOUBLEBUFFER are mutually exclusive in the current generic implementation
+        /// </summary>
+        PFD_SUPPORT_GDI = 16,
+        /// <summary>
+        /// The buffer supports OpenGL drawing
+        /// </summary>
+        PFD_SUPPORT_OPENGL = 32,
+        /// <summary>
+        /// The pixel format is supported by a device driver that accelerates the generic 
+        /// implementation. If this flag is clear and the PFD_GENERIC_FORMAT flag is set,
+        /// the pixel format is supported by the generic implementation only
+        /// </summary>
+        PFD_GENERIC_ACCELERATED = 4096,
+        /// <summary>
+        /// The pixel format is supported by the GDI software implementation, which is also
+        /// known as the generic implementation. If this bit is clear, the pixel format is
+        /// supported by a device driver or hardware
+        /// </summary>
+        PFD_GENERIC_FORMAT = 64,
+        /// <summary>
+        /// The buffer uses RGBA pixels on a palette-managed device. A logical palette is 
+        /// required to achieve the best results for this pixel type. Colors in the palette
+        /// should be specified according to the values of the cRedBits, cRedShift, cGreenBits,
+        /// cGreenShift, cBluebits, and cBlueShift members of PIXELFORMATDESCRIPTOR structure. The palette should be created and 
+        /// realized in the device context before calling wglMakeCurrent
+        /// </summary>
+        PFD_NEED_PALETTE = 128,
+        /// <summary>
+        /// Defined in the pixel format descriptors of hardware that supports one hardware palette
+        /// in 256-color mode only. For such systems to use hardware acceleration, the hardware palette
+        /// must be in a fixed order (for example, 3-3-2) when in RGBA mode or must match the logical
+        /// palette when in color-index mode. 
+        /// When this flag is set, you must call SetSystemPaletteUse in your program to force a one-to-one
+        /// mapping of the logical palette and the system palette. If your OpenGL hardware supports multiple
+        /// hardware palettes and the device driver can allocate spare hardware palettes for OpenGL, this flag
+        /// is typically clear.
+        /// This flag is not set in the generic pixel formats
+        /// </summary>
+        PFD_NEED_SYSTEM_PALETTE = 256,
+        /// <summary>
+        /// The buffer is double-buffered. This flag and PFD_SUPPORT_GDI are mutually exclusive in the current 
+        /// generic implementation
+        /// </summary>
+        PFD_DOUBLEBUFFER = 1,
+        /// <summary>
+        /// The buffer is stereoscopic. This flag is not supported in the current generic implementation
+        /// </summary>
+        PFD_STEREO = 2,
+        /// <summary>
+        /// Indicates whether a device can swap individual layer planes with pixel formats that include 
+        /// double-buffered overlay or underlay planes. Otherwise all layer planes are swapped together 
+        /// as a group. When this flag is set, wglSwapLayerBuffers is supported
+        /// </summary>        
+        PFD_SWAP_LAYER_BUFFERS = 2048,
+        /// <summary>
+        /// The requested pixel format can either have or not have a depth buffer. To select a pixel format
+        /// without a depth buffer, you must specify this flag. The requested pixel format can be with or 
+        /// without a depth buffer. Otherwise, only pixel formats with a depth buffer are considered
+        /// </summary>
+        /// <remarks>You can specify the following bit flags when calling ChoosePixelFormat</remarks>
+        PFD_DEPTH_DONTCARE = 536870912,
+        /// <summary>
+        /// The requested pixel format can be either single- or double-buffered
+        /// </summary>
+        /// <remarks>You can specify the following bit flags when calling ChoosePixelFormat</remarks>
+        PFD_DOUBLEBUFFER_DONTCARE = 1073741824,
+        /// <summary>
+        /// The requested pixel format can be either monoscopic or stereoscopic
+        /// </summary>
+        /// <remarks>You can specify the following bit flags when calling ChoosePixelFormat</remarks>
+        PFD_STEREO_DONTCARE = -2147483648,
+        /// <summary>
+        /// Specifies the content of the back buffer in the double-buffered main color plane following
+        /// a buffer swap. Swapping the color buffers causes the content of the back buffer to be copied
+        /// to the front buffer. The content of the back buffer is not affected by the swap. PFD_SWAP_COPY
+        /// is a hint only and might not be provided by a driver
+        /// </summary>
+        PFD_SWAP_COPY = 1024,
+        /// <summary>
+        /// Specifies the content of the back buffer in the double-buffered main color plane following a 
+        /// buffer swap. Swapping the color buffers causes the exchange of the back buffer's content with 
+        /// the front buffer's content. Following the swap, the back buffer's content contains the front 
+        /// buffer's content before the swap. PFD_SWAP_EXCHANGE is a hint only and might not be provided by
+        /// a driver 
+        /// </summary>
+        PFD_SWAP_EXCHANGE = 512,
+        /// <summary>
+        /// RGBA pixels. Each pixel has four components in this order: red, green, blue, and alpha
+        /// </summary>
+        PFD_TYPE_RGBA = 0,
+        /// <summary>
+        /// Color-index pixels. Each pixel uses a color-index value
+        /// </summary>
+        PFD_TYPE_COLORINDEX = 1
+    }
+    /// <summary>
+    /// Specifies the type of pixel data
+    /// </summary>
+    [Flags]
+    internal enum PixelType : byte
+    {
+        /// <summary>
+        /// RGBA pixels. Each pixel has four components in this order: red, green, blue, and alpha
+        /// </summary>
+        PFD_TYPE_RGBA = 0,
+        /// <summary>
+        /// Color-index pixels. Each pixel uses a color-index value
+        /// </summary>
+        PFD_TYPE_COLORINDEX = 1
+    }
+    internal enum ShowWindowCommands
+    {
+        /// <summary>
+        /// Hides the window and activates another window.
+        /// </summary>
+        Hide = 0,
+        /// <summary>
+        /// Activates and displays a window. If the window is minimized or
+        /// maximized, the system restores it to its original size and position.
+        /// An application should specify this flag when displaying the window
+        /// for the first time.
+        /// </summary>
+        Normal = 1,
+        /// <summary>
+        /// Activates the window and displays it as a minimized window.
+        /// </summary>
+        ShowMinimized = 2,
+        /// <summary>
+        /// Maximizes the specified window.
+        /// </summary>
+        Maximize = 3, // is this the right value?
+        /// <summary>
+        /// Activates the window and displays it as a maximized window.
+        /// </summary>      
+        ShowMaximized = 3,
+        /// <summary>
+        /// Displays a window in its most recent size and position. This value
+        /// is similar to <see cref="Winapi.ShowWindowCommand.Normal"/>, except
+        /// the window is not activated.
+        /// </summary>
+        ShowNoActivate = 4,
+        /// <summary>
+        /// Activates the window and displays it in its current size and position.
+        /// </summary>
+        Show = 5,
+        /// <summary>
+        /// Minimizes the specified window and activates the next top-level
+        /// window in the Z order.
+        /// </summary>
+        Minimize = 6,
+        /// <summary>
+        /// Displays the window as a minimized window. This value is similar to
+        /// <see cref="Winapi.ShowWindowCommand.ShowMinimized"/>, except the
+        /// window is not activated.
+        /// </summary>
+        ShowMinNoActive = 7,
+        /// <summary>
+        /// Displays the window in its current size and position. This value is
+        /// similar to <see cref="Winapi.ShowWindowCommand.Show"/>, except the
+        /// window is not activated.
+        /// </summary>
+        ShowNA = 8,
+        /// <summary>
+        /// Activates and displays the window. If the window is minimized or
+        /// maximized, the system restores it to its original size and position.
+        /// An application should specify this flag when restoring a minimized window.
+        /// </summary>
+        Restore = 9,
+        /// <summary>
+        /// Sets the show state based on the SW_* value specified in the
+        /// STARTUPINFO structure passed to the CreateProcess function by the
+        /// program that started the application.
+        /// </summary>
+        ShowDefault = 10,
+        /// <summary>
+        ///  <b>Windows 2000/XP:</b> Minimizes a window, even if the thread
+        /// that owns the window is not responding. This flag should only be
+        /// used when minimizing windows from a different thread.
+        /// </summary>
+        ForceMinimize = 11
+    }
+
+
+
+
 }

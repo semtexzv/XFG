@@ -12,22 +12,17 @@ namespace XFG.Platform
     public interface IDisplay
     {
         void SetSync(SyncType type);
-        void SetFullscreen(bool fullscreen);
+        void SetMode(DisplayMode mode);
         int Width { get; }
         int Height { get; }
+        int X { get; }
+        int Y { get; }
+        void MakeCurrent();
+        IntPtr GetProc(string name);
+        void SwapBuffers();
         event OnResizeDelegate OnResized;
         void Hide();
         void Show();
-        event OnKeyDelegate OnKeyDown;
-        event OnKeyDelegate OnKeyUp;
-        event OnCharDelegate OnCharacter;
-        event OnMouseMoveDelegate OnMouseMove;
-        event OnMouseDelegate OnMouseDown;
-        event OnMouseDelegate OnMouseUp;
-        event OnScrollDelegate OnScroll;
-        Vector2 GetMousePos();
-        bool IsKeyDown(Keys key);
-        bool IsMouseDown(MouseButton button);
-        Modifiers GetModifiers();        
+      
     }
 }

@@ -17,6 +17,8 @@ namespace XFG
 
         public static int Width { get { return Platform.Width; } }
         public static int Height { get { return Platform.Height; } }
+        public static int X { get { return Platform.X; } }
+        public static int Y { get { return Platform.Y; } }
 
         public static event OnResizeDelegate OnResize
         {

@@ -26,5 +26,11 @@ namespace XFG.Platform.Dummy
         {
             throw new NotImplementedException();
         }
+
+
+        public IInput Input
+        {
+            get { throw new NotImplementedException(); }
+        }
     }
 }

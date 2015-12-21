@@ -17,10 +17,10 @@ namespace XFG
 
     public static class Input
     {
-        private static IDisplay Platform; 
-        internal static void SetPlatform(IDisplay graphics)
+        private static IInput Platform;
+        internal static void SetPlatform(IInput input)
         {
-            Platform = graphics;
+            Platform = input;
         }
 
         public static event OnKeyDelegate OnKeyDown

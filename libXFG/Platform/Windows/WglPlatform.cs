@@ -9,27 +9,27 @@ namespace XFG.Platform.Windows
     {
         internal WglDisplay display;
         internal WinAudio audio;
-        public WglPlatform()
-        {
-        }
+        
         public void Init(AppConfig config, AppListener app)
         {
             display = new WglDisplay(config,app);
+            audio = new WinAudio();
         }
         public IAudio Audio
         {
             get { return audio; }
         }
-
         public IDisplay Display
         {
             get { return display; }
         }
-
-
+        public IInput Input
+        {
+            get { return display; }
+        }
         public void Run()
         {
-            display.Run();
+            display.MessageLoop();
         }
     }
 }

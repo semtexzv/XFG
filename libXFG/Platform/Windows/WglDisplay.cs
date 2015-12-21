@@ -1,104 +1,81 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 
 namespace XFG.Platform.Windows
 {
-    class WglDisplay : IDisplay
+    class WglDisplay : IDisplay,IInput
     {
         private IntPtr Handle;
-        private WglContext Context;
         AppListener App;
-        Wgl.WndProc WndProc = new Wgl.WndProc((a, b, c, d) =>
+
+        private IntPtr WindowProc(IntPtr hWnd, WM msg, IntPtr wParam, IntPtr lParam)
+        {
+            switch (msg)
             {
-                switch (b)
-                {
-                    case WM.ERASEBKGND:
-                        return (IntPtr)1;
-                    case WM.PAINT:
-                        //Render here
-                        return (IntPtr)0;
-                    default:
-                        return Wgl.DefWindowProc(a, b, c, d);
-                }
-            });
+                case WM.PAINT:
+                    //Render here
+                    App.Render(0);
+                    return (IntPtr)0;
+                case WM.CLOSE:
+                    Logger.Log("Quitting");
+                    Environment.Exit(0);
+                    return IntPtr.Zero;
+                default:
+                    return Winapi.DefWindowProc(hWnd, msg, wParam, lParam);
+            }
+        }
         public WglDisplay(AppConfig config,AppListener app)
         {
             App = app;
-            WNDCLASS cls = new WNDCLASS();
+            WNDCLASSEX cls = new WNDCLASSEX();
             cls.style = ClassStyles.OwnDC | ClassStyles.HorizontalRedraw | ClassStyles.VerticalRedraw;
-            cls.lpfnWndProc = WndProc;
-            cls.hInstance = Wgl.GetModuleHandle(null);
+            cls.lpfnWndProc = WindowProc;
+            cls.hInstance = Winapi.GetModuleHandle(null);
             cls.hIcon = IntPtr.Zero;
             cls.hCursor = IntPtr.Zero;
             cls.hbrBackground = IntPtr.Zero;
             cls.lpszMenuName = null;
             cls.lpszClassName = Utils.Extensions.RandomString(10) + "Class";
-            ushort windowClass = Wgl.RegisterClass(ref cls);
+            short windowClass = Winapi.RegisterClassEx(ref cls);
             if (windowClass == 0)
             {
                 int err = Marshal.GetLastWin32Error();
                 throw new Exception(String.Format("Could not create register window class :{0}", err));
             }
-            Handle = Wgl.CreateWindowEx(0, cls.lpszClassName, config.Title,
-                    WindowStyles.WS_OVERLAPPEDWINDOW, 0, 0, 240, 240, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero);
+            Handle = Winapi.CreateWindowEx(0, cls.lpszClassName, config.Title,
+                    WindowStyles.WS_OVERLAPPEDWINDOW, Wgl.CW_USEDEFAULT, Wgl.CW_USEDEFAULT, config.Width, config.Height, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero);
             if (Handle == IntPtr.Zero)
             {
                 int err = Marshal.GetLastWin32Error();
                 throw new Exception(String.Format("Could not create dummy window :{0}", err));
             }
-            Context = new WglContext(Handle);
+            Winapi.ShowWindow(Handle, ShowWindowCommands.Show);
         }
-        internal void Run()
+
+    
+        internal void MessageLoop()
         {
             MSG msg;
             int ret;
-            while ((ret = Wgl.GetMessage(out msg, IntPtr.Zero, 0, 0)) != 0)
+            while ((ret = Winapi.GetMessage(out msg, Handle, 0, 0)) != 0)
             {
                 if (ret == -1)
                 {
                     //-1 indicates an error
+                    Environment.Exit(1);
                 }
                 else
                 {
-                    Wgl.TranslateMessage(ref msg);
-                    Wgl.DispatchMessage(ref msg);
+                    Winapi.TranslateMessage(ref msg);
+                    Winapi.DispatchMessage(ref msg);
                 }
             }
         }
-        public void SetSync(OpenGL.SyncType type)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void SetFullscreen(bool fullscreen)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int Width
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public int Height
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public event OnResizeDelegate OnResized;
-
-        public void Hide()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Show()
-        {
-            throw new NotImplementedException();
-        }
 
         public event OnKeyDelegate OnKeyDown;
 
@@ -130,6 +107,63 @@ namespace XFG.Platform.Windows
         }
 
         public Modifiers GetModifiers()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetSync(OpenGL.SyncType type)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetMode(OpenGL.DisplayMode mode)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Width
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public int Height
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public int X
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public int Y
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public void MakeCurrent()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IntPtr GetProc(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SwapBuffers()
+        {
+            throw new NotImplementedException();
+        }
+
+        public event OnResizeDelegate OnResized;
+
+        public void Hide()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Show()
         {
             throw new NotImplementedException();
         }

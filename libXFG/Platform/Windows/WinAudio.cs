@@ -46,5 +46,18 @@ namespace XFG.Platform.Windows
         {
             throw new NotImplementedException();
         }
+
+
+        public float Volume
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
     }
 }
