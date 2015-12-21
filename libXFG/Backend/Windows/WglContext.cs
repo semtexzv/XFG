@@ -91,9 +91,9 @@ namespace XFG.Backend.Windows
                 {
                     switch (b)
                     {
-                        case 0x0014:
+                        case WM.ERASEBKGND:
                             return (IntPtr)1;
-                        case 0x0F:
+                        case WM.PAINT:
                             return (IntPtr)0;
                         default:
                             return Wgl.DefWindowProc(a, b, c, d);

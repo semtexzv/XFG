@@ -54,7 +54,6 @@
     <Compile Include="Backend\AudioPlatform.cs" />
     <Compile Include="Backend\GraphicsPlatform.cs" />
     <Compile Include="Backend\InputPlatform.cs" />
-    <Compile Include="Backend\IPlatform.cs" />
     <Compile Include="Backend\Windows\Wgl.cs" />
     <Compile Include="Backend\Windows\WglConsts.cs" />
     <Compile Include="Backend\Windows\WglContext.cs" />
@@ -77,6 +76,7 @@
     <Compile Include="Gfx\VertexBuffer.cs" />
     <Compile Include="Graphics.cs" />
     <Compile Include="Input.cs" />
+    <Compile Include="Backend\IWindow.cs" />
     <Compile Include="Keys.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="MathUtils\Math.cs" />
@@ -93,6 +93,7 @@
     <Compile Include="Utils\Crc32.cs" />
     <Compile Include="Utils\Extensions.cs" />
     <Compile Include="Utils\PNG.cs" />
+    <Compile Include="Window.cs" />
     <Compile Include="XFG.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

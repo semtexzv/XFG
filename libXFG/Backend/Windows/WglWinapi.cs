@@ -27,7 +27,7 @@ namespace XFG.Backend.Windows
     internal static partial class Wgl 
     {
 
-        internal delegate IntPtr WndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
+        internal delegate IntPtr WndProc(IntPtr hWnd, WM msg, IntPtr wParam, IntPtr lParam);
 
 
 
@@ -122,7 +122,7 @@ namespace XFG.Backend.Windows
         internal static extern IntPtr CallWindowProc(WndProc lpPrevWndFunc, IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
 
         [DllImport(USER_DLL, EntryPoint = "DefWindowProc", SetLastError = true, CharSet = CharSet.Unicode)]
-        internal static extern IntPtr DefWindowProc(IntPtr hWnd, uint uMsg, IntPtr wParam, IntPtr lParam);
+        internal static extern IntPtr DefWindowProc(IntPtr hWnd, WM uMsg, IntPtr wParam, IntPtr lParam);
 
         [DllImport(USER_DLL, CharSet = CharSet.Unicode, SetLastError = true)]
         internal static extern bool DestroyWindow(IntPtr hwnd);
