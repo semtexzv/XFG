@@ -5,6 +5,7 @@ using System.Text;
 using XFG.Platform;
 using XFG.Platform.Dummy;
 using XFG.Platform.Windows;
+using XFG.Platform.X11;
 
 namespace XFG
 {
@@ -19,11 +20,15 @@ namespace XFG
                 case PlatformType.Windows:
                     platform = new WglPlatform();
                     break;
+                case PlatformType.Linux:
+                    platform = new X11Platform();
+                    break;
                 default:
                     break;
             }
             platform.Init(conf, listener);
             platform.Run();
         }
+        
     }
 }

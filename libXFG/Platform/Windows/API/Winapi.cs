@@ -58,12 +58,25 @@ namespace XFG.Platform.Windows
         internal static extern bool ReleaseDC(IntPtr hWnd, IntPtr hDC);
         [DllImport("user32.dll")]
         internal static extern bool GetClientRect(IntPtr hWnd, out RECT lpRect);
+        [DllImport("user32.dll", SetLastError = true)]
+        internal static extern bool GetWindowRect(IntPtr hwnd, out RECT lpRect);
         internal static RECT GetClientRect(IntPtr hWnd)
         {
             RECT result;
             GetClientRect(hWnd, out result);
             return result;
         }
+        internal static RECT GetWindowRect(IntPtr hWnd)
+        {
+            RECT result;
+            GetWindowRect(hWnd, out result);
+            return result;
+        }
+        [DllImport("user32.dll")]
+        internal static extern bool AdjustWindowRectEx(ref RECT lpRect, uint dwStyle,
+           bool bMenu, uint dwExStyle);
+        [DllImport("user32.dll", SetLastError = true)]
+        internal static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, SetWindowPosFlags uFlags);
 
         #endregion
         #region Gdi32

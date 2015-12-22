@@ -16,12 +16,10 @@ namespace XFG.Platform
         void SetMode(DisplayMode mode);
         int Width { get; }
         int Height { get; }
-        void MakeCurrent();
-        IntPtr GetProc(string name);
-        void SwapBuffers();
-        event OnResizeDelegate OnResized;
         void Hide();
         void Show();
+
+        event OnResizeDelegate OnResized;
       
     }
 }
