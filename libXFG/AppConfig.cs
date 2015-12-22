@@ -7,7 +7,7 @@ namespace XFG
 {
     public class AppConfig
     {
-        public DisplayFormat DisplayFormat;
+        public DisplayFormat DisplayFormat = DisplayFormat.RGBA8888;
         public int Width;
         public int Height;
         public bool Fullscreen;

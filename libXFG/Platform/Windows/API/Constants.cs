@@ -1487,6 +1487,14 @@ namespace XFG.Platform.Windows
         /// </summary>
         ForceMinimize = 11
     }
+    [Flags()]
+    public enum GL_StringName : uint
+    {
+        GL_VENDOR = 0x1F00,
+        GL_RENDERER = 0x1F01,
+        GL_VERSION = 0x1F02,
+        GL_EXTENSIONS = 0x1F03,
+    }
 
 
 

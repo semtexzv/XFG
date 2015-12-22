@@ -12,6 +12,7 @@ namespace XFG.Platform
     { 
         void Mute();
         void Unmute();
+        
         ISound CreateSound(string filename);
         IMusic CreateMusic(string filename);
         IAudioDevice CreateDevice(bool stereo, int sampleRate);

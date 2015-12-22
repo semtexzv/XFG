@@ -87,7 +87,6 @@
     <Compile Include="MathUtils\Vector3.cs" />
     <Compile Include="MathUtils\Vector4.cs" />
     <Compile Include="OpenGL\GL.cs" />
-    <Compile Include="OpenGL\GLContext.cs" />
     <Compile Include="OpenGL\SyncType.cs" />
     <Compile Include="Platform\Windows\API\Constants.cs" />
     <Compile Include="Platform\Windows\API\Types.cs" />

@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Collections.Generic;
+using XFG.OpenGL;
 
 namespace XFG.Platform.Windows
 {
@@ -30,6 +31,13 @@ namespace XFG.Platform.Windows
 
         [DllImport("opengl32.dll", EntryPoint = "wglGetProcAddress", ExactSpelling = true)]
         private static extern IntPtr wglGetProcAddress(string lpszProc);
+        [DllImport("opengl32.dll", EntryPoint = "glGetString")]
+        internal static extern IntPtr exGlGetString(StringName name);
+
+        internal static string GlGetString(StringName name)
+        {
+            return Marshal.PtrToStringAnsi(exGlGetString(name));
+        }
         #endregion
         #region Consts
         internal const int CONTEXT_DEBUG_BIT_ARB = 0x00000001;
@@ -144,6 +152,8 @@ namespace XFG.Platform.Windows
         internal const int SAMPLES_ARB = 0x2042;
         internal const int CW_USEDEFAULT = int.MinValue;
         #endregion
+
+
         internal static IntPtr glDLL = IntPtr.Zero;
         private static IntPtr OpenGLLib
         {
@@ -177,7 +187,7 @@ namespace XFG.Platform.Windows
                 return res;
         }
 
-        internal delegate IntPtr wglCreateContextAttribsARB(IntPtr hDC, IntPtr hShareContext, int[] attribList);
+        internal delegate UIntPtr wglCreateContextAttribsARB(IntPtr hDC, IntPtr hShareContext, int[] attribList);
         internal delegate bool wglGetPixelFormatAttribivARB(IntPtr hdc, int iPixelFormat, int iLayerPlane, uint nAttributes, int[] piAttributes, int[] piValues);
         internal delegate bool wglGetPixelFormatAttribfvARB(IntPtr hdc, int iPixelFormat, int iLayerPlane, uint nAttributes, int[] piAttributes, float[] pfValues);
         internal delegate bool wglChoosePixelFormatARB(IntPtr hdc, int[] piAttribIList, float[] pfAttribFList, uint nMaxFormats, ref int piFormats, ref uint nNumFormats);

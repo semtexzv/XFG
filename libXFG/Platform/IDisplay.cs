@@ -11,12 +11,11 @@ namespace XFG.Platform
 
     public interface IDisplay
     {
-        void SetSync(SyncType type);
+        bool SupportsVSync();
+        void SetVSync(bool sync);
         void SetMode(DisplayMode mode);
         int Width { get; }
         int Height { get; }
-        int X { get; }
-        int Y { get; }
         void MakeCurrent();
         IntPtr GetProc(string name);
         void SwapBuffers();

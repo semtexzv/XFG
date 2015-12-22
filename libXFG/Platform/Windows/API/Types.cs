@@ -13,6 +13,101 @@ namespace XFG.Platform.Windows
         internal Int32 Y;
     }
     [StructLayout(LayoutKind.Sequential)]
+    public struct RECT
+    {
+        public int Left, Top, Right, Bottom;
+
+        public RECT(int left, int top, int right, int bottom)
+        {
+            Left = left;
+            Top = top;
+            Right = right;
+            Bottom = bottom;
+        }
+
+        public RECT(System.Drawing.Rectangle r) : this(r.Left, r.Top, r.Right, r.Bottom) { }
+
+        public int X
+        {
+            get { return Left; }
+            set { Right -= (Left - value); Left = value; }
+        }
+
+        public int Y
+        {
+            get { return Top; }
+            set { Bottom -= (Top - value); Top = value; }
+        }
+
+        public int Height
+        {
+            get { return Bottom - Top; }
+            set { Bottom = value + Top; }
+        }
+
+        public int Width
+        {
+            get { return Right - Left; }
+            set { Right = value + Left; }
+        }
+
+        public System.Drawing.Point Location
+        {
+            get { return new System.Drawing.Point(Left, Top); }
+            set { X = value.X; Y = value.Y; }
+        }
+
+        public System.Drawing.Size Size
+        {
+            get { return new System.Drawing.Size(Width, Height); }
+            set { Width = value.Width; Height = value.Height; }
+        }
+
+        public static implicit operator System.Drawing.Rectangle(RECT r)
+        {
+            return new System.Drawing.Rectangle(r.Left, r.Top, r.Width, r.Height);
+        }
+
+        public static implicit operator RECT(System.Drawing.Rectangle r)
+        {
+            return new RECT(r);
+        }
+
+        public static bool operator ==(RECT r1, RECT r2)
+        {
+            return r1.Equals(r2);
+        }
+
+        public static bool operator !=(RECT r1, RECT r2)
+        {
+            return !r1.Equals(r2);
+        }
+
+        public bool Equals(RECT r)
+        {
+            return r.Left == Left && r.Top == Top && r.Right == Right && r.Bottom == Bottom;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is RECT)
+                return Equals((RECT)obj);
+            else if (obj is System.Drawing.Rectangle)
+                return Equals(new RECT((System.Drawing.Rectangle)obj));
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return ((System.Drawing.Rectangle)this).GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return string.Format(System.Globalization.CultureInfo.CurrentCulture, "{{Left={0},Top={1},Right={2},Bottom={3}}}", Left, Top, Right, Bottom);
+        }
+    }
+    [StructLayout(LayoutKind.Sequential)]
     internal struct MSG
     {
         internal IntPtr hwnd;
@@ -256,6 +351,43 @@ namespace XFG.Platform.Windows
         /// Ignored. Earlier implementations of OpenGL used this member, but it is no longer used
         /// </summary>
          uint dwDamageMask;
+
+         public static PixelFormatDescriptor Default
+         {
+             get
+             {
+                 PixelFormatDescriptor PF;
+
+                 PF.nSize = 40;
+                 PF.nVersion = 1;
+                 PF.dwFlags = PFDBitFlag.PFD_DRAW_TO_WINDOW | PFDBitFlag.PFD_SUPPORT_OPENGL | PFDBitFlag.PFD_DOUBLEBUFFER | PFDBitFlag.PFD_SWAP_COPY;
+                 PF.iPixelType=PixelType.PFD_TYPE_RGBA;
+                 PF.cColorBits = 32;
+                 PF.cRedBits = 0;
+                 PF.cRedShift = 0;
+                 PF.cGreenBits = 0;
+                 PF.cGreenShift = 0;
+                 PF.cBlueBits = 0;
+                 PF.cBlueShift = 0;
+                 PF.cAlphaBits = 0;
+                 PF.cAlphaShift = 0;
+                 PF.cAccumBits = 0;
+                 PF.cAccumRedBits = 0;
+                 PF.cAccumGreenBits = 0;
+                 PF.cAccumBlueBits = 0;
+                 PF.cAccumAlphaBits = 0;
+                 PF.cDepthBits = 32;
+                 PF.cStencilBits = 0;
+                 PF.cAuxBuffers = 0;
+                 PF.iLayerType = 0;
+                 PF.bReserved = 0;
+                 PF.dwLayerMask = 0;
+                 PF.dwVisibleMask = 0;
+                 PF.dwDamageMask = 0;
+
+                 return PF;
+             }
+         }
     }
 
 

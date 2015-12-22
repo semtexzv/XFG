@@ -25,7 +25,7 @@ namespace XFG.Platform.Windows
         }
         public IInput Input
         {
-            get { return display; }
+            get { return null; }
         }
         public void Run()
         {
