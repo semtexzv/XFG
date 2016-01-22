@@ -9,10 +9,10 @@ namespace XFG.Platform
   
     interface IPlatform
     {
-        void Init(AppConfig config, AppListener app);
+        void Init(AppConfig config);
         IAudio Audio { get; }
         IDisplay Display { get; }
         IInput Input { get; }
-        void Run();
+        void Run(AppListener app);
     }
 }

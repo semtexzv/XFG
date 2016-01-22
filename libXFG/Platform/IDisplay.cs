@@ -8,7 +8,6 @@ using XFG.OpenGL;
 
 namespace XFG.Platform
 {
-
     public interface IDisplay
     {
         bool SupportsVSync();

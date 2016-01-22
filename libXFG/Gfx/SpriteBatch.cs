@@ -35,6 +35,7 @@ namespace XFG.Gfx
         /// Transform is applied to every vertex. Probably combined camera matrix.
         /// </summary>
         public Matrix4 Transform = Matrix4.Identity;
+        public Matrix4 View = Matrix4.Identity;
 
         private VertexBuffer<SimpleVertex> Buffer;
         private ShaderProgram Program;
@@ -64,7 +65,7 @@ namespace XFG.Gfx
                     GL.Enable(EnableCap.BLEND);
                     GL.BlendFunc(BlendingFactor.SRC_ALPHA, BlendingFactor.ONE_MINUS_SRC_ALPHA);
                 }
-                GL.UniformMatrix4fv(Program.Uniform(ProjTransName), 1, false,Transform);
+                GL.UniformMatrix4fv(Program.Uniform(ProjTransName), 1, false,View*Transform);
                 
                 CurrentTexture.Bind();
                 GL.Uniform1i(Program.Uniform(TextureUniformName), CurrentTexture.Unit);
@@ -111,7 +112,7 @@ namespace XFG.Gfx
             v2.pos.Add(xCenter, yCenter);
             v3.pos.Add(xCenter, yCenter);
             v4.pos.Add(xCenter, yCenter);
-            Buffer.Add(new short[] { 0, 1, 2, 2, 3, 0 }, v1, v2, v3, v4);
+            Buffer.Mesh.Add(new short[] { 0, 1, 2, 2, 3, 0 }, v1, v2, v3, v4);
         }
 
         private string PositionAttribName = "a_pos";
@@ -150,6 +151,8 @@ void main()
     gl_Position = u_projTrans*vec4(a_pos,0.0,1.0);
 }
 ",
+
+
 @"
 #ifdef GL_ES
 #define LOWP lowp

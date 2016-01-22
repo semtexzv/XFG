@@ -18,10 +18,7 @@ namespace XFG.Gfx.Loaders
         string Filename;
         public int Height { get; private set; }
         public int Width { get; private set; }
-        int BitDepth;
-        int BPP = 4;
         int FilterMethod = 0;
-        bool Interlaced = false;
         bool Filtered
         {
             get
@@ -29,7 +26,6 @@ namespace XFG.Gfx.Loaders
                 return FilterMethod != 0;
             }
         }
-        private byte[] Palette;
         public PngLoader(string fname)
         {
             Filename = fname;
@@ -44,25 +40,18 @@ namespace XFG.Gfx.Loaders
         {
             return new PngLoader(filename);
         }
-
         public void Load()
         {
             Stopwatch sw = new Stopwatch();
-               sw.Start();
-           PNG im = new PNG(Filename);
+            PNG im = new PNG(Filename);
             Width = im.Width;
             Height = im.Height;
             byte[] res = new byte[Width * Height * 4];
             im.ReadScanlinesRGBA(ref res, Height);
-            sw.Stop();
-            Logger.Log("time = " + sw.ElapsedMilliseconds);
             try
-
             {
-
                 IntPtr add = Marshal.UnsafeAddrOfPinnedArrayElement(res, 0);
                 GL.TexImage2D(TextureTarget.TEXTURE_2D, 0, InternalPixelFormat.RGBA, Width, Height, 0, PixelFormat.RGBA, PixelType.UNSIGNED_BYTE, add);
-
                 var error = GL.GetError();
                 if (error != ErrorCode.NO_ERROR)
                 {

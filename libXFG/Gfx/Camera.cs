@@ -35,7 +35,7 @@ namespace XFG.Gfx
 
         public void SetToOrtho(float width, float height)
         {
-            Projection = Matrix4.Ortho(width, height, 1000);
+            Projection = Matrix4.Ortho(width, height);
         }
         public void SetToPerspective(float fovY, float aspectRatio)
         {

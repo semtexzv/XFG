@@ -13,8 +13,7 @@ namespace XFG.Gfx
         public float V1;
         public float U2;
         public float V2;
-
-
+        
         public TextureRegion(Texture texture,int x,int y,int width,int height)
         {
             Texture = texture;
@@ -39,7 +38,9 @@ namespace XFG.Gfx
             V2 = region.V2;     
         }
 
-
+        /// <summary>
+        /// X coordinate in pixels
+        /// </summary>
         public float X
         {
             get
@@ -47,12 +48,14 @@ namespace XFG.Gfx
                 return U1 * Texture.Width;
             }
         }
+        /// <summary>
+        /// Y coordinate in pixels
+        /// </summary>
         public float Y
         {
             get
             {
                 return V1 * Texture.Height;
-
             }
         }
         /// <summary>

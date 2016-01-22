@@ -112,19 +112,6 @@ namespace XFG.MathUtils
                 Row4 = new Vector4(vals[12], vals[13], vals[14], vals[15]);
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
         public float Determinant
         {
             get
@@ -165,11 +152,11 @@ namespace XFG.MathUtils
             get
             {
                 Matrix4 cof = new Matrix4();
+                Matrix3 sub = new Matrix3();
                 for (int i = 0; i < 4; i++)
                 {
                     for (int j = 0; j < 4; j++)
                     {
-                        Matrix3 sub = new Matrix3();
                         for (int i1 = 0; i1 < 4; i1++)
                         {
                             for (int j1 = 0; j1 < 4; j1++)
@@ -265,26 +252,6 @@ namespace XFG.MathUtils
 
                 );
             this = res;
-            /*
-        res[0, 0] = Row1.Dot(mat.Col1);
-        res[0, 1] = Row1.Dot(mat.Col2);
-        res[0, 2] = Row1.Dot(mat.Col3);
-        res[0, 3] = Row1.Dot(mat.Col4);
-
-        res[1, 0] = Row2.Dot(mat.Col1);
-        res[1, 1] = Row2.Dot(mat.Col2);
-        res[1, 2] = Row2.Dot(mat.Col3);
-        res[1, 3] = Row2.Dot(mat.Col4);
-
-        res[2, 0] = Row3.Dot(mat.Col1);
-        res[2, 1] = Row3.Dot(mat.Col2);
-        res[2, 2] = Row3.Dot(mat.Col3);
-        res[2, 3] = Row3.Dot(mat.Col4);
-
-        res[3, 0] = Row4.Dot(mat.Col1);
-        res[3, 1] = Row4.Dot(mat.Col2);
-        res[3, 2] = Row4.Dot(mat.Col3);
-        res[3, 3] = Row4.Dot(mat.Col4);*/
 
         }
         public void Div(float v)
@@ -449,25 +416,30 @@ namespace XFG.MathUtils
             m[0, 2] = Math.Sin(angle);
             return m;
         }
-
         public static Matrix4 Ortho(float left, float right, float bottom, float top, float near, float far)
         {
             Matrix4 res = Identity;
-            res[0, 0] = 2 / (right - left);
-            res[1, 1] = 2 / (top - bottom);
-            res[2, 2] = -2 / (far - near);
-            res[0, 3] = -(right + left) / (right - left);
-            res[1, 3] = -(top + bottom) / (top - bottom);
-            res[2, 3] = -(far + near) / (far - near);
+            float x_orth = 2 / (right - left);
+            float y_orth = 2 / (top - bottom);
+            float z_orth = -2 / (far - near);
+
+            float tx = -(right + left) / (right - left);
+            float ty = -(top + bottom) / (top - bottom);
+            float tz = -(far + near) / (far - near);
+
+            res[0,0] = x_orth;
+            res[1,1] = y_orth;
+            res[2,2] = z_orth;
+            res[0,3] = tx;
+            res[1,3] = ty;
+            res[2,3] = tz;
+            res[3,3] = 1;
+
             return res;
         }
-        public static Matrix4 Ortho(float width, float height, float depth)
+        public static Matrix4 Ortho(float width, float height)
         {
-            return Ortho(-width * 0.5f, width * 0.5f, -height * 0.5f, height * 00.5f, 0.1f, depth);
-        }
-        public static Matrix4 Ortho(float width,float height)
-        {
-            return Ortho(width, height, 1000);
+            return Ortho(-width / 2, width / 2, -height / 2, height/2, -0.001f, 100f);
         }
         public static Matrix4 PerspectiveInf(float near, float fovy, float aspectRatio)
         {

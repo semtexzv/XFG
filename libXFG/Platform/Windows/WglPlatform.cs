@@ -10,9 +10,9 @@ namespace XFG.Platform.Windows
         internal WglDisplay display;
         internal WinAudio audio;
         
-        public void Init(AppConfig config, AppListener app)
+        public void Init(AppConfig config)
         {
-            display = new WglDisplay(config,app);
+            display = new WglDisplay(config);
             audio = new WinAudio();
         }
         public IAudio Audio
@@ -25,11 +25,11 @@ namespace XFG.Platform.Windows
         }
         public IInput Input
         {
-            get { return null; }
+            get { return display; }
         }
-        public void Run()
+        public void Run(AppListener app)
         {
-            display.MessageLoop();
+            display.MessageLoop(app);
         }
     }
 }

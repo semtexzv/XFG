@@ -4,11 +4,12 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using XFG.MathUtils;
 using XFG.OpenGL;
 
 namespace XFG.Platform.Windows
 {
-    class WglDisplay : IDisplay
+    class WglDisplay : IDisplay,IInput
     {
         private IntPtr WindowHandle;
         private IntPtr Instance;
@@ -19,8 +20,7 @@ namespace XFG.Platform.Windows
             get;
             private set;
         }
-
-        AppListener App;
+        
 
         private IntPtr WindowProc(IntPtr hWnd, WM msg, IntPtr wParam, IntPtr lParam)
         {
@@ -46,8 +46,10 @@ namespace XFG.Platform.Windows
                     return Winapi.DefWindowProc(hWnd, msg, wParam, lParam);
             }
         }
-        internal void MessageLoop()
+        internal AppListener App;
+        internal void MessageLoop(AppListener app)
         {
+            App = app;
             MSG msg;
             int ret;
             while ((ret = Winapi.GetMessage(out msg, WindowHandle, 0, 0)) != 0)
@@ -64,9 +66,8 @@ namespace XFG.Platform.Windows
                 }
             }
         }
-        public WglDisplay(AppConfig config, AppListener app)
+        public WglDisplay(AppConfig config)
         {
-            App = app;
             CreateWindow(config);
             Context = new WglContext(WindowHandle, null);
 
@@ -99,6 +100,13 @@ namespace XFG.Platform.Windows
             private set;
         }
         public event OnResizeDelegate OnResized;
+        public event OnKeyDelegate OnKeyDown;
+        public event OnKeyDelegate OnKeyUp;
+        public event OnCharDelegate OnCharacter;
+        public event OnMouseMoveDelegate OnMouseMove;
+        public event OnMouseDelegate OnMouseDown;
+        public event OnMouseDelegate OnMouseUp;
+        public event OnScrollDelegate OnScroll;
 
         public void Hide()
         {
@@ -133,13 +141,32 @@ namespace XFG.Platform.Windows
             if (WindowHandle == IntPtr.Zero)
             {
                 int err = Marshal.GetLastWin32Error();
-                throw new Exception(String.Format("Could not create dummy window :{0}", err));
+                throw new Exception(String.Format("Could not create window :{0}", err));
             }
             RECT rect = Winapi.GetWindowRect(WindowHandle);
             Winapi.AdjustWindowRectEx(ref rect, (uint)(WindowStyles.WS_CAPTION | WindowStyles.WS_SYSMENU | WindowStyles.WS_MINIMIZEBOX), false, 0);
             Winapi.SetWindowPos(WindowHandle, IntPtr.Zero, 0, 0, rect.Right - rect.Left, rect.Bottom - rect.Top, SetWindowPosFlags.NOMOVE | SetWindowPosFlags.NOZORDER);
 
         }
-      
+
+        public Vector2 GetMousePos()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsKeyDown(Keys key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsMouseDown(MouseButton button)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Modifiers GetModifiers()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

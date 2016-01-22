@@ -44,9 +44,7 @@ namespace XFG.Gfx
                    
                 }
             }
-
             UploadParams();
-
         }
 
 

@@ -24,16 +24,19 @@ namespace XFG.Audiolib
         /// Stops playing, music will start playing from beginning after calling play()
         /// </summary>
         void Stop();
+
+        bool Playing { get; }
         /// <summary>
         /// Changes volume of this instance
         /// </summary>
         /// <param name="volume"></param>
-        void SetVolume(float volume);
+        float Volume { get; set; }
         /// <summary>
         /// Enables/Disables looping.
         /// </summary>
         /// <param name="looping"></param>
         void SetLooping(bool looping);
+        bool isLooping();
         /// <summary>
         /// Called when music stops playing/loop iteration has ended
         /// </summary>

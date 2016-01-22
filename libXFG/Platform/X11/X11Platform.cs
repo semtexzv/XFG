@@ -7,7 +7,7 @@ namespace XFG.Platform.X11
 {
     class X11Platform : IPlatform
     {
-        public void Init(AppConfig config, AppListener app)
+        public void Init(AppConfig config)
         {
             throw new NotImplementedException();
         }
@@ -27,7 +27,7 @@ namespace XFG.Platform.X11
             get { throw new NotImplementedException(); }
         }
 
-        public void Run()
+        public void Run(AppListener app)
         {
             throw new NotImplementedException();
         }
