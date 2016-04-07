@@ -20,6 +20,14 @@ namespace XFG.Platform.Windows
             get;
             private set;
         }
+
+		public WglDisplay(AppConfig config)
+		{
+			CreateWindow(config);
+			Context = new WglContext(WindowHandle, null);
+
+			Winapi.ShowWindow(WindowHandle, ShowWindowCommands.Show);
+		}
         
 
         private IntPtr WindowProc(IntPtr hWnd, WM msg, IntPtr wParam, IntPtr lParam)
@@ -66,14 +74,6 @@ namespace XFG.Platform.Windows
                 }
             }
         }
-        public WglDisplay(AppConfig config)
-        {
-            CreateWindow(config);
-            Context = new WglContext(WindowHandle, null);
-
-            Winapi.ShowWindow(WindowHandle, ShowWindowCommands.Show);
-        }
-
         public bool SupportsVSync()
         {
             return Context.SupportsVSync();

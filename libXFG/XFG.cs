@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using XFG.Platform;
 using XFG.Platform.Windows;
-using XFG.Platform.X11;
+using XFG.Glfw;
 
 namespace XFG
 {
@@ -20,7 +20,7 @@ namespace XFG
                     platform = new WglPlatform();
                     break;
                 case PlatformType.Linux:
-                    platform = new X11Platform();
+					platform = new GlfwPlatform();
                     break;
                 default:
                     break;
