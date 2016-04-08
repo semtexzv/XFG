@@ -8,13 +8,14 @@ namespace XFG.Glfw
 		private GlfwDisplay _display;
 		public GlfwPlatform ()
 		{
+			
 		}
 
 		#region IPlatform implementation
 
 		public void Init (AppConfig config)
 		{
-			_display = new GlfwDisplay ();
+			_display = new GlfwDisplay (config);
 		}
 
 

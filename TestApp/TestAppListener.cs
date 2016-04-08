@@ -19,20 +19,23 @@ namespace TestApp
             tex = new XFG.Gfx.Texture("Assets/images.png");
 
             XFG.Input.OnMouseMove += Input_OnMouseMove;
+			XFG.Graphics.OnResize += (int width, int height) => {
+				batch.View = Matrix4.Ortho(width,height);
+			
+			};
         }
 
         private void Input_OnMouseMove(int x, int y)
         {
             Logger.Log("{},{},", x, y);
         }
-
+		float time = 0;
         public void Render(float delta)
         {
+			time += delta;
             GL.ClearColor(0, 1, 1, 0.5f);
             GL.Clear(ClearBufferMask.ALL);
-            batch.View = Matrix4.Ortho(10, 10);
-            batch.Transform *= Matrix4.Translation(new Vector3(0, 0.1f, 0f));
-            batch.Draw(tex, 0, 0, 10, 10, 0);
+			batch.Draw(tex, 0, 0, XFG.Graphics.Width,Graphics.Height,time);
             batch.Flush();
         }
 

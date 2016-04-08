@@ -7,14 +7,21 @@ namespace XFG.Glfw
 	public class GlfwDisplay : IDisplay,IInput
 	{
 		IntPtr _win;
-		public GlfwDisplay ()
+		public GlfwDisplay (AppConfig config)
 		{
 			Glfw.Init ();
-			_win = Glfw.CreateWindow (480, 480, "hello", IntPtr.Zero, IntPtr.Zero);
+			_win = Glfw.CreateWindow (config.Width, config.Height, config.Title, IntPtr.Zero, IntPtr.Zero);
+			Glfw.SetWindowSizeCallback (_win, resize_cb);
+
 			Glfw.MakeContextCurrent (_win);
+
 			GL.Load (name => Glfw.GetProcAddress (name));
 		}
-
+		internal void resize_cb(IntPtr window, int w, int h)
+		{
+			GL.Viewport (0, 0, w, h);
+			OnResized (w, h);
+		}
 		#region IDisplay implementation
 
 		public event OnResizeDelegate OnResized;
@@ -23,10 +30,12 @@ namespace XFG.Glfw
 		{
 			throw new NotImplementedException ();
 		}
+
 		public void Run (AppListener app){
 			double time = Glfw.GetTime ();
 			while (Glfw.WindowShouldClose (_win) != 1) {
 				double newTime = Glfw.GetTime ();
+				Logger.Debug ("Time: {0}", newTime - time);
 				app.Render ((float)(newTime - time));
 				Glfw.SwapBuffers (_win);
 				Glfw.PollEvents ();
@@ -51,18 +60,23 @@ namespace XFG.Glfw
 
 		public void Show ()
 		{
-			throw new NotImplementedException ();
+			
 		}
 
 		public int Width {
 			get {
-				throw new NotImplementedException ();
+				int w, h;
+				Glfw.GetWindowSize (_win, out w, out h);
+				return w;
 			}
 		}
 
 		public int Height {
 			get {
-				throw new NotImplementedException ();
+
+				int w, h;
+				Glfw.GetWindowSize (_win, out w, out h);
+				return h;
 			}
 		}
 
