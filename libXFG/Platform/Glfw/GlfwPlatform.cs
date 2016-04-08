@@ -17,9 +17,11 @@ namespace XFG.Glfw
 			_display = new GlfwDisplay ();
 		}
 
+
+
 		public void Run (AppListener app)
 		{
-			
+			_display.Run (app);
 		}
 
 		public IAudio Audio {
@@ -36,7 +38,7 @@ namespace XFG.Glfw
 
 		public IInput Input {
 			get {
-				return null;	
+				return _display;
 			}
 		}
 
