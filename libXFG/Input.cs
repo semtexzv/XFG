@@ -33,7 +33,7 @@ namespace XFG
             add { Platform.OnKeyUp += value; }
             remove { Platform.OnKeyUp -= value; }
         }
-        public static event OnCharDelegate OnCHaracter
+        public static event OnCharDelegate OnCharacter
         {
             add { Platform.OnCharacter += value; }
             remove { Platform.OnCharacter -= value; }

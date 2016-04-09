@@ -12,6 +12,8 @@ namespace XFG.Platform
     {
         bool SupportsVSync();
         void SetVSync(bool sync);
+		// Is is a god idea to add this functionality ?
+		// It will probably require context re-creation.
         void SetMode(DisplayMode mode);
         int Width { get; }
         int Height { get; }

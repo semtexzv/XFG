@@ -23,11 +23,21 @@ namespace TestApp
 				batch.View = Matrix4.Ortho(width,height);
 			
 			};
+			XFG.Input.OnKeyDown += (key, mods) => {
+				Logger.Debug("KeyDown {0} , {1}",key,mods);
+
+			};
+			XFG.Input.OnMouseDown += (button) => {
+				Logger.Debug("Mouse {0}",button);
+			};
+			XFG.Input.OnScroll += (amount) => {
+				Logger.Debug("Scroll {0}",amount);
+			};
         }
 
         private void Input_OnMouseMove(int x, int y)
         {
-            Logger.Log("{},{},", x, y);
+            Logger.Log("{0},{1},", x, y);
         }
 		float time = 0;
         public void Render(float delta)

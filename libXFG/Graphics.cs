@@ -37,7 +37,7 @@ namespace XFG
         {
             Platform.SetVSync(sync);
         }
-        
+
 
     }
 }

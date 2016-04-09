@@ -2,6 +2,9 @@
 using System.Runtime.InteropServices;
 
 using OKeys = XFG.Keys;
+using OMods = XFG.Modifiers;
+using OMouse = XFG.MouseButton;
+
 namespace XFG.Glfw
 {
 	[StructLayout(LayoutKind.Sequential)]
@@ -39,140 +42,8 @@ namespace XFG.Glfw
 		Press=1,
 		Repeat=2
 	}
-	[Flags]
-	internal enum Mods : int
-	{
-		Shift = 0x0001,
-		Control = 0x0002,
-		Alt = 0x0004,
-		Super = 0x0008
-	}
 
-	internal enum Keys {
 
-		GLFW_KEY_UNKNOWN = 1,
-		GLFW_KEY_SPACE = 32,
-		GLFW_KEY_APOSTROPHE = 39,
-		GLFW_KEY_COMMA = 44,
-		GLFW_KEY_MINUS = 45,
-		GLFW_KEY_PERIOD = 46,
-		GLFW_KEY_SLASH = 47,
-		GLFW_KEY_0 = 48,
-		GLFW_KEY_1 = 49,
-		GLFW_KEY_2 = 50,
-		GLFW_KEY_3 = 51,
-		GLFW_KEY_4 = 52,
-		GLFW_KEY_5 = 53,
-		GLFW_KEY_6 = 54,
-		GLFW_KEY_7 = 55,
-		GLFW_KEY_8 = 56,
-		GLFW_KEY_9 = 57,
-		GLFW_KEY_SEMICOLON = 59,
-		GLFW_KEY_EQUAL = 61,
-		GLFW_KEY_A = 65,
-		GLFW_KEY_B = 66,
-		GLFW_KEY_C = 67,
-		GLFW_KEY_D = 68,
-		GLFW_KEY_E = 69,
-		GLFW_KEY_F = 70,
-		GLFW_KEY_G = 71,
-		GLFW_KEY_H = 72,
-		GLFW_KEY_I = 73,
-		GLFW_KEY_J = 74,
-		GLFW_KEY_K = 75,
-		GLFW_KEY_L = 76,
-		GLFW_KEY_M = 77,
-		GLFW_KEY_N = 78,
-		GLFW_KEY_O = 79,
-		GLFW_KEY_P = 80,
-		GLFW_KEY_Q = 81,
-		GLFW_KEY_R = 82,
-		GLFW_KEY_S = 83,
-		GLFW_KEY_T = 84,
-		GLFW_KEY_U = 85,
-		GLFW_KEY_V = 86,
-		GLFW_KEY_W = 87,
-		GLFW_KEY_X = 88,
-		GLFW_KEY_Y = 89,
-		GLFW_KEY_Z = 90,
-		GLFW_KEY_LEFT_BRACKET = 91,
-		GLFW_KEY_BACKSLASH = 92,
-		GLFW_KEY_RIGHT_BRACKET = 93,
-		GLFW_KEY_GRAVE_ACCENT = 96,
-		GLFW_KEY_WORLD_1 = 161,
-		GLFW_KEY_WORLD_2 = 162,
-		GLFW_KEY_ESCAPE = 256,
-		GLFW_KEY_ENTER = 257,
-		GLFW_KEY_TAB = 258,
-		GLFW_KEY_BACKSPACE = 259,
-		GLFW_KEY_INSERT = 260,
-		GLFW_KEY_DELETE = 261,
-		GLFW_KEY_RIGHT = 262,
-		GLFW_KEY_LEFT = 263,
-		GLFW_KEY_DOWN = 264,
-		GLFW_KEY_UP = 265,
-		GLFW_KEY_PAGE_UP = 266,
-		GLFW_KEY_PAGE_DOWN = 267,
-		GLFW_KEY_HOME = 268,
-		GLFW_KEY_END = 269,
-		GLFW_KEY_CAPS_LOCK = 280,
-		GLFW_KEY_SCROLL_LOCK = 281,
-		GLFW_KEY_NUM_LOCK = 282,
-		GLFW_KEY_PRINT_SCREEN = 283,
-		GLFW_KEY_PAUSE = 284,
-		GLFW_KEY_F1 = 290,
-		GLFW_KEY_F2 = 291,
-		GLFW_KEY_F3 = 292,
-		GLFW_KEY_F4 = 293,
-		GLFW_KEY_F5 = 294,
-		GLFW_KEY_F6 = 295,
-		GLFW_KEY_F7 = 296,
-		GLFW_KEY_F8 = 297,
-		GLFW_KEY_F9 = 298,
-		GLFW_KEY_F10 = 299,
-		GLFW_KEY_F11 = 300,
-		GLFW_KEY_F12 = 301,
-		GLFW_KEY_F13 = 302,
-		GLFW_KEY_F14 = 303,
-		GLFW_KEY_F15 = 304,
-		GLFW_KEY_F16 = 305,
-		GLFW_KEY_F17 = 306,
-		GLFW_KEY_F18 = 307,
-		GLFW_KEY_F19 = 308,
-		GLFW_KEY_F20 = 309,
-		GLFW_KEY_F21 = 310,
-		GLFW_KEY_F22 = 311,
-		GLFW_KEY_F23 = 312,
-		GLFW_KEY_F24 = 313,
-		GLFW_KEY_KP_2 = 322,
-		GLFW_KEY_F25 = 314,
-		GLFW_KEY_KP_0 = 320,
-		GLFW_KEY_KP_1 = 321,
-		GLFW_KEY_KP_3 = 323,
-		GLFW_KEY_KP_4 = 324,
-		GLFW_KEY_KP_5 = 325,
-		GLFW_KEY_KP_6 = 326,
-		GLFW_KEY_KP_7 = 327,
-		GLFW_KEY_KP_8 = 328,
-		GLFW_KEY_KP_9 = 329,
-		GLFW_KEY_KP_DECIMAL = 330,
-		GLFW_KEY_KP_DIVIDE = 331,
-		GLFW_KEY_KP_MULTIPLY = 332,
-		GLFW_KEY_KP_SUBTRACT = 333,
-		GLFW_KEY_KP_ADD = 334,
-		GLFW_KEY_KP_ENTER = 335,
-		GLFW_KEY_KP_EQUAL = 336,
-		GLFW_KEY_LEFT_SHIFT = 340,
-		GLFW_KEY_LEFT_CONTROL = 341,
-		GLFW_KEY_LEFT_ALT = 342,
-		GLFW_KEY_LEFT_SUPER = 343,
-		GLFW_KEY_RIGHT_SHIFT = 344,
-		GLFW_KEY_RIGHT_CONTROL = 345,
-		GLFW_KEY_RIGHT_ALT = 346,
-		GLFW_KEY_RIGHT_SUPER = 347,
-		GLFW_KEY_MENU = 348,
-		GLFW_KEY_LAST = GLFW_KEY_MENU
-	}
 
 	internal delegate void ErrorFun(int error,string desc);
 	internal delegate void WindowPosFun(IntPtr window, int x, int y);
@@ -182,11 +53,11 @@ namespace XFG.Glfw
 	internal delegate void WindowFocusFun(IntPtr window, [MarshalAs(UnmanagedType.I4)] bool focused); 
 	internal delegate void WindowIconifyFun(IntPtr window, [MarshalAs(UnmanagedType.I4)] bool icon);
 	internal delegate void FramebufferSizeFun(IntPtr window, int width, int height);
-	internal delegate void MouseButtonFun(IntPtr window, int button, int action, int mods);
+	internal delegate void MouseButtonFun(IntPtr window, Glfw.MouseButton button, KeyAction action, Glfw.Mods mods);
 	internal delegate void CursorPosFun(IntPtr window, double x , double y);
 	internal delegate void CursorenterFun(IntPtr window, [MarshalAs(UnmanagedType.I4)] bool entered);
 	internal delegate void ScrollFun(IntPtr window, double xoff, double yoff);
-	internal delegate void KeyFun(IntPtr window, Keys key, int scan, KeyAction action, Mods mods);
+	internal delegate void KeyFun(IntPtr window, Glfw.Keys key, int scan, KeyAction action, Glfw.Mods mods);
 	internal delegate void CharFun(IntPtr window, uint codepoint);
 	internal delegate void CharModsFun(IntPtr window, uint codepoint , int mods);
 	internal delegate void DropFun(IntPtr window, int count, string[] paths);
@@ -194,6 +65,156 @@ namespace XFG.Glfw
 
 	internal static class Glfw
 	{
+
+		internal enum MouseButton{
+			GLFW_MOUSE_BUTTON_1=  0,
+			GLFW_MOUSE_BUTTON_2 =  1,
+			GLFW_MOUSE_BUTTON_3  = 2,
+			GLFW_MOUSE_BUTTON_4  = 3,
+			GLFW_MOUSE_BUTTON_5   =4,
+			GLFW_MOUSE_BUTTON_6=   5,
+			GLFW_MOUSE_BUTTON_7 =  6,
+			GLFW_MOUSE_BUTTON_8  = 7,
+			GLFW_MOUSE_BUTTON_LAST=   GLFW_MOUSE_BUTTON_8,
+			GLFW_MOUSE_BUTTON_LEFT =  GLFW_MOUSE_BUTTON_1,
+			GLFW_MOUSE_BUTTON_RIGHT =  GLFW_MOUSE_BUTTON_2,
+			GLFW_MOUSE_BUTTON_MIDDLE =  GLFW_MOUSE_BUTTON_3,
+		}
+
+		[Flags]
+		internal enum Mods : int
+		{
+			Shift = 0x0001,
+			Control = 0x0002,
+			Alt = 0x0004,
+			Super = 0x0008
+		}
+
+		internal enum Keys {
+
+			GLFW_KEY_UNKNOWN = 1,
+			GLFW_KEY_SPACE = 32,
+			GLFW_KEY_APOSTROPHE = 39,
+			GLFW_KEY_COMMA = 44,
+			GLFW_KEY_MINUS = 45,
+			GLFW_KEY_PERIOD = 46,
+			GLFW_KEY_SLASH = 47,
+			GLFW_KEY_0 = 48,
+			GLFW_KEY_1 = 49,
+			GLFW_KEY_2 = 50,
+			GLFW_KEY_3 = 51,
+			GLFW_KEY_4 = 52,
+			GLFW_KEY_5 = 53,
+			GLFW_KEY_6 = 54,
+			GLFW_KEY_7 = 55,
+			GLFW_KEY_8 = 56,
+			GLFW_KEY_9 = 57,
+			GLFW_KEY_SEMICOLON = 59,
+			GLFW_KEY_EQUAL = 61,
+			GLFW_KEY_A = 65,
+			GLFW_KEY_B = 66,
+			GLFW_KEY_C = 67,
+			GLFW_KEY_D = 68,
+			GLFW_KEY_E = 69,
+			GLFW_KEY_F = 70,
+			GLFW_KEY_G = 71,
+			GLFW_KEY_H = 72,
+			GLFW_KEY_I = 73,
+			GLFW_KEY_J = 74,
+			GLFW_KEY_K = 75,
+			GLFW_KEY_L = 76,
+			GLFW_KEY_M = 77,
+			GLFW_KEY_N = 78,
+			GLFW_KEY_O = 79,
+			GLFW_KEY_P = 80,
+			GLFW_KEY_Q = 81,
+			GLFW_KEY_R = 82,
+			GLFW_KEY_S = 83,
+			GLFW_KEY_T = 84,
+			GLFW_KEY_U = 85,
+			GLFW_KEY_V = 86,
+			GLFW_KEY_W = 87,
+			GLFW_KEY_X = 88,
+			GLFW_KEY_Y = 89,
+			GLFW_KEY_Z = 90,
+			GLFW_KEY_LEFT_BRACKET = 91,
+			GLFW_KEY_BACKSLASH = 92,
+			GLFW_KEY_RIGHT_BRACKET = 93,
+			GLFW_KEY_GRAVE_ACCENT = 96,
+			GLFW_KEY_WORLD_1 = 161,
+			GLFW_KEY_WORLD_2 = 162,
+			GLFW_KEY_ESCAPE = 256,
+			GLFW_KEY_ENTER = 257,
+			GLFW_KEY_TAB = 258,
+			GLFW_KEY_BACKSPACE = 259,
+			GLFW_KEY_INSERT = 260,
+			GLFW_KEY_DELETE = 261,
+			GLFW_KEY_RIGHT = 262,
+			GLFW_KEY_LEFT = 263,
+			GLFW_KEY_DOWN = 264,
+			GLFW_KEY_UP = 265,
+			GLFW_KEY_PAGE_UP = 266,
+			GLFW_KEY_PAGE_DOWN = 267,
+			GLFW_KEY_HOME = 268,
+			GLFW_KEY_END = 269,
+			GLFW_KEY_CAPS_LOCK = 280,
+			GLFW_KEY_SCROLL_LOCK = 281,
+			GLFW_KEY_NUM_LOCK = 282,
+			GLFW_KEY_PRINT_SCREEN = 283,
+			GLFW_KEY_PAUSE = 284,
+			GLFW_KEY_F1 = 290,
+			GLFW_KEY_F2 = 291,
+			GLFW_KEY_F3 = 292,
+			GLFW_KEY_F4 = 293,
+			GLFW_KEY_F5 = 294,
+			GLFW_KEY_F6 = 295,
+			GLFW_KEY_F7 = 296,
+			GLFW_KEY_F8 = 297,
+			GLFW_KEY_F9 = 298,
+			GLFW_KEY_F10 = 299,
+			GLFW_KEY_F11 = 300,
+			GLFW_KEY_F12 = 301,
+			GLFW_KEY_F13 = 302,
+			GLFW_KEY_F14 = 303,
+			GLFW_KEY_F15 = 304,
+			GLFW_KEY_F16 = 305,
+			GLFW_KEY_F17 = 306,
+			GLFW_KEY_F18 = 307,
+			GLFW_KEY_F19 = 308,
+			GLFW_KEY_F20 = 309,
+			GLFW_KEY_F21 = 310,
+			GLFW_KEY_F22 = 311,
+			GLFW_KEY_F23 = 312,
+			GLFW_KEY_F24 = 313,
+			GLFW_KEY_KP_2 = 322,
+			GLFW_KEY_F25 = 314,
+			GLFW_KEY_KP_0 = 320,
+			GLFW_KEY_KP_1 = 321,
+			GLFW_KEY_KP_3 = 323,
+			GLFW_KEY_KP_4 = 324,
+			GLFW_KEY_KP_5 = 325,
+			GLFW_KEY_KP_6 = 326,
+			GLFW_KEY_KP_7 = 327,
+			GLFW_KEY_KP_8 = 328,
+			GLFW_KEY_KP_9 = 329,
+			GLFW_KEY_KP_DECIMAL = 330,
+			GLFW_KEY_KP_DIVIDE = 331,
+			GLFW_KEY_KP_MULTIPLY = 332,
+			GLFW_KEY_KP_SUBTRACT = 333,
+			GLFW_KEY_KP_ADD = 334,
+			GLFW_KEY_KP_ENTER = 335,
+			GLFW_KEY_KP_EQUAL = 336,
+			GLFW_KEY_LEFT_SHIFT = 340,
+			GLFW_KEY_LEFT_CONTROL = 341,
+			GLFW_KEY_LEFT_ALT = 342,
+			GLFW_KEY_LEFT_SUPER = 343,
+			GLFW_KEY_RIGHT_SHIFT = 344,
+			GLFW_KEY_RIGHT_CONTROL = 345,
+			GLFW_KEY_RIGHT_ALT = 346,
+			GLFW_KEY_RIGHT_SUPER = 347,
+			GLFW_KEY_MENU = 348,
+			GLFW_KEY_LAST = GLFW_KEY_MENU
+		}
 		private const string lib = "glfw";
 
 		[DllImport(lib,EntryPoint="glfwInit")]
@@ -359,10 +380,10 @@ namespace XFG.Glfw
 		public static extern void SetInputMode(IntPtr window, int mode,int value);
 
 		[DllImport(lib,EntryPoint="glfwGetKey")]
-		public static extern int GetKey(IntPtr window, int key);
+		public static extern KeyAction GetKey(IntPtr window, Keys key);
 
 		[DllImport(lib,EntryPoint="glfwGetMouseButton")]
-		public static extern int GetMouseButton(IntPtr window, int buton);
+		public static extern KeyAction GetMouseButton(IntPtr window, MouseButton buton);
 
 
 		[DllImport(lib,EntryPoint="glfwGetCursorPos")]
@@ -383,7 +404,7 @@ namespace XFG.Glfw
 
 
 		[DllImport(lib,EntryPoint="glfwSetCursor")]
-		public static extern int GetKey(IntPtr window, IntPtr cursor);
+		public static extern void SetCursor(IntPtr window, IntPtr cursor);
 
 
 		[DllImport(lib,EntryPoint="glfwSetKeyCallback")]
@@ -585,6 +606,26 @@ namespace XFG.Glfw
 			return OKeys.UNKNOWN;
 		}
 
+		internal static OMods MapMods(Mods mods)
+		{
+			OMods res = OMods.None;
+			if (mods.HasFlag (Mods.Alt)) {
+				res |= OMods.Alt;
+			}
+			if (mods.HasFlag (Mods.Control)) {
+				res |= OMods.Control;
+			}
+			if (mods.HasFlag (Mods.Shift)) {
+				res |= OMods.Shift;
+			}
+			if (mods.HasFlag(Mods.Super)) {
+				res |= OMods.Meta;
+			}
+			return res;
+		}
+		internal static OMouse MapMouseButton(MouseButton button){
+			return (OMouse) (button + 1);
+		}
 
 
 	}
