@@ -1,0 +1,35 @@
+# CMake generation dependency list for this directory.
+C:/Users/Semtexzv/Documents/GitHubVisualStudio/XFG/glfw-3.1.2/CMakeLists.txt
+C:/Users/Semtexzv/Documents/GitHubVisualStudio/XFG/glfw-3.1.2/CMakeFiles/3.4.3/CMakeSystem.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/CMakeSystemSpecificInitialize.cmake
+C:/Users/Semtexzv/Documents/GitHubVisualStudio/XFG/glfw-3.1.2/CMakeFiles/3.4.3/CMakeCCompiler.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/CMakeSystemSpecificInformation.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/CMakeGenericSystem.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/Platform/Windows.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/Platform/WindowsPaths.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/CMakeCInformation.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/Platform/Windows-MSVC-C.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/Platform/Windows-MSVC.cmake
+C:/Users/Semtexzv/Documents/GitHubVisualStudio/XFG/glfw-3.1.2/CMakeFiles/3.4.3/CMakeRCCompiler.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/CMakeRCInformation.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/CMakeCommonLanguageInclude.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/FindOpenGL.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/FindPackageMessage.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/CMakeParseArguments.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/FindThreads.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/CheckLibraryExists.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/CheckSymbolExists.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/CheckIncludeFile.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/FindPackageMessage.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/CMakeParseArguments.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/CMakePackageConfigHelpers.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/CMakeParseArguments.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/WriteBasicConfigVersionFile.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/CMakeParseArguments.cmake
+C:/Users/Semtexzv/Documents/GitHubVisualStudio/XFG/glfw-3.1.2/src/glfw3Config.cmake.in
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/BasicConfigVersion-SameMajorVersion.cmake.in
+C:/Users/Semtexzv/Documents/GitHubVisualStudio/XFG/glfw-3.1.2/src/glfw_config.h.in
+C:/Users/Semtexzv/Documents/GitHubVisualStudio/XFG/glfw-3.1.2/src/glfw3.pc.in
+C:/Users/Semtexzv/Documents/GitHubVisualStudio/XFG/glfw-3.1.2/cmake_uninstall.cmake.in

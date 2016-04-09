@@ -1,0 +1,9 @@
+C:/Users/Semtexzv/Documents/GitHubVisualStudio/XFG/GLFW/include/GLFW/glfw3.h
+C:/Users/Semtexzv/Documents/GitHubVisualStudio/XFG/GLFW/include/GLFW/glfw3native.h
+C:/Users/Semtexzv/Documents/GitHubVisualStudio/XFG/GLFW/lib/cmake/glfw/glfw3Config.cmake
+C:/Users/Semtexzv/Documents/GitHubVisualStudio/XFG/GLFW/lib/cmake/glfw/glfw3ConfigVersion.cmake
+C:/Users/Semtexzv/Documents/GitHubVisualStudio/XFG/GLFW/lib/cmake/glfw/glfwTargets.cmake
+C:/Users/Semtexzv/Documents/GitHubVisualStudio/XFG/GLFW/lib/cmake/glfw/glfwTargets-debug.cmake
+C:/Users/Semtexzv/Documents/GitHubVisualStudio/XFG/GLFW/lib/pkgconfig/glfw3.pc
+C:/Users/Semtexzv/Documents/GitHubVisualStudio/XFG/GLFW/lib/glfw3dll.lib
+C:/Users/Semtexzv/Documents/GitHubVisualStudio/XFG/GLFW/lib/glfw3.dll

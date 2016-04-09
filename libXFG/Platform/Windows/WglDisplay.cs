@@ -40,6 +40,14 @@ namespace XFG.Platform.Windows
                     Width = (int)lParam & 0x0000FFFF;
                     Height = (int)lParam >> 16;
                     Logger.Debug("size changedto {0} {1} ", Width, Height);
+                    if (OnResized != null)
+                    {
+                        OnResized(Width, Height);
+                    }
+                    if (GL.Viewport != null)
+                    {
+                        GL.Viewport(0, 0, Width, Height);
+                    }
                     return IntPtr.Zero;
                 case WM.PAINT:
                     Context.MakeCurrent();

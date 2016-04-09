@@ -17,7 +17,7 @@ namespace XFG
             switch (Config.Platform)
             {
                 case PlatformType.Windows:
-                    platform = new WglPlatform();
+                    platform = new GlfwPlatform();
                     break;
                 case PlatformType.Linux:
 					platform = new GlfwPlatform();
