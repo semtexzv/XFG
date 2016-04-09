@@ -109,22 +109,20 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-
   <Target Name="AfterBuild">
-    <Copy SourceFiles="..\GLFW\lib\libglfw.so" DestinationFiles="..\GLFW\lib\libglfw3.so"  Condition=" '$(OS)' !='Windows_NT' "/>
+    <Copy SourceFiles="..\GLFW\lib\libglfw.so" DestinationFiles="..\GLFW\lib\libglfw3.so" Condition=" '$(OS)' !='Windows_NT' " />
   </Target>
-
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-      <Content Include="..\GLFW\lib\glfw3.dll"  Condition=" '$(OS)' == 'Windows_NT' ">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Content>
+    <Content Include="..\GLFW\lib\glfw3.dll" Condition=" '$(OS)' == 'Windows_NT' ">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-      <Content Include="..\GLFW\lib\libglfw3.so"  Condition=" '$(OS)' != 'Windows_NT' ">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Content>
+    <Content Include="..\GLFW\lib\libglfw3.so" Condition=" '$(OS)' != 'Windows_NT' ">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>
