@@ -1,0 +1,10 @@
+/home/semtexzv/XFG/GLFW/include/GLFW/glfw3native.h
+/home/semtexzv/XFG/GLFW/include/GLFW/glfw3.h
+/home/semtexzv/XFG/GLFW/lib/cmake/glfw/glfw3Config.cmake
+/home/semtexzv/XFG/GLFW/lib/cmake/glfw/glfw3ConfigVersion.cmake
+/home/semtexzv/XFG/GLFW/lib/cmake/glfw/glfwTargets.cmake
+/home/semtexzv/XFG/GLFW/lib/cmake/glfw/glfwTargets-noconfig.cmake
+/home/semtexzv/XFG/GLFW/lib/pkgconfig/glfw3.pc
+/home/semtexzv/XFG/GLFW/lib/libglfw.so.3.1
+/home/semtexzv/XFG/GLFW/lib/libglfw.so.3
+/home/semtexzv/XFG/GLFW/lib/libglfw.so

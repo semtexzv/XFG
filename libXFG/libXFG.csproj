@@ -102,20 +102,29 @@
     <Compile Include="Platform\Glfw\GlfwPlatform.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">
   </Target>
   -->
+
+  <Target Name="AfterBuild">
+    <Copy SourceFiles="..\GLFW\lib\libglfw.so" DestinationFiles="..\GLFW\lib\libglfw3.so"  Condition=" '$(OS)' !='Windows_NT' "/>
+  </Target>
+
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\GLFW\lib\glfw3.dll">
-      <Link>glfw3.dll</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+      <Content Include="..\GLFW\lib\glfw3.dll"  Condition=" '$(OS)' == 'Windows_NT' ">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+  </ItemGroup>
+  <ItemGroup>
+      <Content Include="..\GLFW\lib\libglfw3.so"  Condition=" '$(OS)' != 'Windows_NT' ">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
   </ItemGroup>
 </Project>
