@@ -35,7 +35,7 @@ namespace TestApp
 			time += delta;
             GL.ClearColor(0, 1, 1, 0.5f);
             GL.Clear(ClearBufferMask.ALL);
-			batch.Draw(tex, 0, 0, XFG.Graphics.Width,Graphics.Height,time);
+			batch.Draw(tex, 0, 0, XFG.Graphics.Width/2,Graphics.Width/2,time);
             batch.Flush();
         }
 

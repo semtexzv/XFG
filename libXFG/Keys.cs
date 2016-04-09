@@ -126,7 +126,7 @@ namespace XFG
         MEDIA_REWIND = 89,
         MEDIA_FAST_FORWARD = 90,
 
-        MUTE_mic= 91,
+        MUTE_MIC= 91,
 
         PAGE_UP = 92,
         PAGE_DOWN = 93,
@@ -160,6 +160,10 @@ namespace XFG
         WIN_RIGHT=META_RIGHT,
         CMD_LEFT = META_LEFT,
         CMD_RIGHT = META_RIGHT,
+		FUNCTION = 119,
+
+		SYSRQ= 120,
+		PRINT_SCREEN = SYSRQ,
 
         BREAK = 121,
         PAUSE = BREAK,

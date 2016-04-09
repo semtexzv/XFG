@@ -12,7 +12,7 @@ namespace XFG.Glfw
 			Glfw.Init ();
 			_win = Glfw.CreateWindow (config.Width, config.Height, config.Title, IntPtr.Zero, IntPtr.Zero);
 			Glfw.SetWindowSizeCallback (_win, resize_cb);
-
+			Glfw.SetKeyCallback (_win, key_cb);
 			Glfw.MakeContextCurrent (_win);
 
 			GL.Load (name => Glfw.GetProcAddress (name));
@@ -21,6 +21,10 @@ namespace XFG.Glfw
 		{
 			GL.Viewport (0, 0, w, h);
 			OnResized (w, h);
+		}
+		internal void key_cb(IntPtr window, Keys key, int scan, KeyAction action, Mods mods)
+		{
+			
 		}
 		#region IDisplay implementation
 
@@ -55,7 +59,7 @@ namespace XFG.Glfw
 
 		public void Hide ()
 		{
-			throw new NotImplementedException ();
+			Glfw.HideWindow ();
 		}
 
 		public void Show ()
@@ -103,7 +107,7 @@ namespace XFG.Glfw
 			throw new NotImplementedException ();
 		}
 
-		public bool IsKeyDown (Keys key)
+		public bool IsKeyDown ( global::XFG.Keys key)
 		{
 			throw new NotImplementedException ();
 		}
