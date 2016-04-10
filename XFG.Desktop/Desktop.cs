@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using XFG;
 using XFG.Platform;
-using XFG.Platform.Windows;
 using XFG.Glfw;
-
 namespace XFG
 {
-    public static class XFG
+   public static class Desktop
     {
         public static void Init(AppConfig conf, AppListener listener)
         {
-            Config.Init();
             IPlatform platform = null;
             switch (Config.Platform)
             {
@@ -20,19 +19,19 @@ namespace XFG
                     platform = new GlfwPlatform();
                     break;
                 case PlatformType.Linux:
-					platform = new GlfwPlatform();
+                    platform = new GlfwPlatform();
                     break;
                 default:
+                    
                     break;
             }
             platform.Init(conf);
-            Audio.SetPlatform(platform.Audio);
-            Graphics.SetPlatform(platform.Display);
-            Input.SetPlatform(platform.Input);
+            XFG.Config.InitPlatform(platform);
+
             listener.Create();
 
             platform.Run(listener);
         }
-        
+
     }
 }

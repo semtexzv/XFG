@@ -25,7 +25,16 @@ namespace XFG
     {
         public static RuntimeType Runtime { get; private set; }
         public static PlatformType Platform { get; private set; }
-        internal static void Init()
+
+        public static void InitPlatform(Platform.IPlatform platform)
+        {
+
+            Audio.SetPlatform(platform.Audio);
+            Graphics.SetPlatform(platform.Display);
+            Input.SetPlatform(platform.Input);
+        }
+
+        static Config()
         {
 
 #if ANDROID
@@ -58,7 +67,6 @@ namespace XFG
             }
 #endif
         }
-
         #region Unix
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
         struct utsname

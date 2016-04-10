@@ -7,7 +7,7 @@ using XFG.Platform;
 namespace XFG.Platform
 {
   
-    interface IPlatform
+   public interface IPlatform
     {
         void Init(AppConfig config);
         IAudio Audio { get; }

@@ -6,7 +6,7 @@ using XFG.MathUtils;
 
 namespace XFG.Platform
 {
-    interface IInput
+    public interface IInput
     {
         event OnKeyDelegate OnKeyDown;
         event OnKeyDelegate OnKeyUp;
