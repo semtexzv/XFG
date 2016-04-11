@@ -22,7 +22,7 @@ namespace XFG
                     platform = new GlfwPlatform();
                     break;
                 default:
-                    
+                    platform = new GlfwPlatform();
                     break;
             }
             platform.Init(conf);

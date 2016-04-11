@@ -68,5 +68,9 @@
     <Content Include="libglfw.so">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="libglfw.dylib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
   </ItemGroup>
 </Project>
