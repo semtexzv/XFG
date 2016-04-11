@@ -8,16 +8,30 @@ namespace XFG.Glfw
 	public class GlfwDisplay : IDisplay,IInput
 	{
 		IntPtr _win;
-		public GlfwDisplay (AppConfig config)
+        private WindowSizeFun _resize_cb;
+        private KeyFun _key_cb;
+        private CursorPosFun _mouse_move_cb;
+        private MouseButtonFun _mouse_button_cb;
+        private ScrollFun _scroll_cb;
+        private CharFun _char_cb;
+        public GlfwDisplay (AppConfig config)
 		{
 			Glfw.Init ();
-			_win = Glfw.CreateWindow (config.Width, config.Height, config.Title, IntPtr.Zero, IntPtr.Zero);
-			Glfw.SetWindowSizeCallback (_win, resize_cb);
-			Glfw.SetKeyCallback (_win, key_cb);
-			Glfw.SetCursorPosCallback (_win, mouse_move_cb);
-			Glfw.SetMouseButtonCallback (_win, mouse_button_cb);
-			Glfw.SetScrollCallback (_win, scroll_cb);
-			Glfw.SetCharCallback (_win, char_cb);
+
+            _resize_cb = new WindowSizeFun(resize_cb);
+            _key_cb = new KeyFun(key_cb);
+            _mouse_move_cb = new CursorPosFun(mouse_move_cb);
+            _mouse_button_cb = new MouseButtonFun(mouse_button_cb);
+            _scroll_cb = new ScrollFun(scroll_cb);
+            _char_cb = new CharFun(char_cb);
+
+            _win = Glfw.CreateWindow (config.Width, config.Height, config.Title, IntPtr.Zero, IntPtr.Zero);
+			Glfw.SetWindowSizeCallback (_win, _resize_cb);
+			Glfw.SetKeyCallback (_win, _key_cb);
+			Glfw.SetCursorPosCallback (_win, _mouse_move_cb);
+			Glfw.SetMouseButtonCallback (_win, _mouse_button_cb);
+			Glfw.SetScrollCallback (_win, _scroll_cb);
+			Glfw.SetCharCallback (_win, _char_cb);
 			Glfw.MakeContextCurrent (_win);
 
 			GL.Load (name => Glfw.GetProcAddress (name));
