@@ -1,8 +1,9 @@
 ﻿<Properties StartupItem="TestApp/TestApp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="libXFG/Platform/Glfw/GlfwDisplay.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="XFG.Desktop/Glfw/GlfwDisplay.cs">
     <Files>
-      <File FileName="libXFG/Platform/Glfw/GlfwDisplay.cs" Line="13" Column="1" />
+      <File FileName="XFG.Desktop/Glfw/Glfw.cs" Line="235" Column="35" />
+      <File FileName="XFG.Desktop/Glfw/GlfwDisplay.cs" Line="36" Column="32" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

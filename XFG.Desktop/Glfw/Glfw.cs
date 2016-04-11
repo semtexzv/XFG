@@ -232,7 +232,7 @@ namespace XFG.Glfw
 			GLFW_KEY_MENU = 348,
 			GLFW_KEY_LAST = GLFW_KEY_MENU
 		}
-		private const string lib = "glfw3";
+		private const string lib = "glfw";
 
 		[DllImport(lib,EntryPoint="glfwInit", CallingConvention = CallingConvention.Cdecl)]
 		public static extern int Init();
