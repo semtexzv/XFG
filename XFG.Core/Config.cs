@@ -6,11 +6,6 @@ using System.Text;
 
 namespace XFG
 {
-    public enum RuntimeType
-    {
-        Mono,
-        Net,
-    }
     public enum PlatformType
     {
         Windows,
@@ -23,84 +18,17 @@ namespace XFG
     }
     public static class Config
     {
-        public static RuntimeType Runtime { get; private set; }
         public static PlatformType Platform { get; private set; }
 
-        public static void InitPlatform(Platform.IPlatform platform)
+        public static void InitPlatform(PlatformType type, Platform.IPlatform platform)
         {
-
-            Audio.SetPlatform(platform.Audio);
-            Graphics.SetPlatform(platform.Display);
-            Input.SetPlatform(platform.Input);
-        }
-
-        static Config()
-        {
-
-#if ANDROID
-            Runtime = RuntimeType.Mono;
-            Platform = PlatformType.Android;
-#elif IPHONE
-            Runtime = RuntimeType.Mono;
-            Platform = PlatformType.iOS; 
-#else
-            Runtime = DetectMono() ? RuntimeType.Mono : RuntimeType.Net;
-            if (DetectWindows())
-                Platform = PlatformType.Windows;
-            else
+            Platform = type;
+            if (platform != null)
             {
-                //Not on windows, time to decide whether this is Osx/Linux
-                utsname name;
-                uname(out name);
-                switch (name.sysname)
-                {
-                    case "Linux":
-                        Platform = PlatformType.Linux;
-                        break;
-                    case "Darwin":
-                        Platform = PlatformType.OSX;
-                        break;
-                    default:
-                        Platform = PlatformType.Unix;
-                        break;
-                }
+                Audio.SetPlatform(platform.Audio);
+                Graphics.SetPlatform(platform.Display);
+                Input.SetPlatform(platform.Input);
             }
-#endif
         }
-        #region Unix
-        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-        struct utsname
-        {
-            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
-            public string sysname;
-            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
-            public string nodename;
-            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
-            public string release;
-            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
-            public string version;
-            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
-            public string machine;
-            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1024)]
-            public string extraJustInCase;
-
-        }
-        [DllImport("libc")]
-        private static extern void uname(out utsname uname_struct);
-        static bool DetectWindows()
-        {
-            return
-                System.Environment.OSVersion.Platform == PlatformID.Win32NT ||
-                System.Environment.OSVersion.Platform == PlatformID.Win32S ||
-                System.Environment.OSVersion.Platform == PlatformID.Win32Windows ||
-                System.Environment.OSVersion.Platform == PlatformID.WinCE;
-        }
-        private static bool DetectMono()
-        {
-            Type t = Type.GetType("Mono.Runtime");
-            return t != null;
-        }
-        #endregion
-
     }
 }
