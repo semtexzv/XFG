@@ -13,45 +13,88 @@ using Android.Opengl;
 using Android.Util;
 using Android.Views.InputMethods;
 using Javax.Microedition.Khronos.Egl;
+using XFG.Platform;
+using XFG.OpenGL;
+using static Android.Opengl.GLSurfaceView;
+using Javax.Microedition.Khronos.Opengles;
 
 namespace XFG
 {
-    class XfgGLSView : GLSurfaceView
+    public class XfgGLSView : GLSurfaceView, IDisplay,IRenderer
     {
-        public XfgGLSView(Context context) : base(context)
+        public XfgGLSView(Context context,DisplayFormat format) : base(context)
         {
+            SetEGLConfigChooser(format.Red, format.Green, format.Blue, format.Alpha, format.Depth, format.Stencil);
+            SetRenderer(this);
         }
 
-        public XfgGLSView(Context context, IAttributeSet attrs) : base(context, attrs)
+        int IDisplay.Height
         {
-        }
-        public override IInputConnection OnCreateInputConnection(EditorInfo outAttrs)
-        {
-            return base.OnCreateInputConnection(outAttrs);
-        }
-        public class XfgEGLConfigChooser : IEGLConfigChooser
-        {
-            public XfgEGLConfigChooser()
+            get
             {
-
+                throw new NotImplementedException();
             }
-            public IntPtr Handle
+        }
+
+        int IDisplay.Width
+        {
+            get
             {
-                get
-                {
-                    throw new NotImplementedException();
-                }
+                throw new NotImplementedException();
             }
+        }
 
-            public Javax.Microedition.Khronos.Egl.EGLConfig ChooseConfig(IEGL10 egl, Javax.Microedition.Khronos.Egl.EGLDisplay display)
+        event OnResizeDelegate IDisplay.OnResized
+        {
+            add
             {
                 throw new NotImplementedException();
             }
 
-            public void Dispose()
+            remove
             {
                 throw new NotImplementedException();
             }
+        }
+
+        void IDisplay.Hide()
+        {
+            throw new NotImplementedException();
+        }
+
+        void IDisplay.SetMode(DisplayMode mode)
+        {
+        }
+
+        void IDisplay.SetVSync(bool sync)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IDisplay.Show()
+        {
+            throw new NotImplementedException();
+        }
+
+        bool IDisplay.SupportsVSync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnDrawFrame(IGL10 gl)
+        {
+            gl.GlClear(GL10.GlColorBufferBit);
+            gl.GlClearColor(1.0f, 0.0f, 0.0f, 0.5f);
+        }
+
+        public void OnSurfaceChanged(IGL10 gl, int width, int height)
+        {
+           
+        }
+
+        public void OnSurfaceCreated(IGL10 gl, Javax.Microedition.Khronos.Egl.EGLConfig config)
+        {
+
         }
     }
 }
