@@ -9,14 +9,15 @@ using XFG.MathUtils;
 using XFG.OpenGL;
 namespace TestApp
 {
-    class TestAppListener :XFG.AppListener
+    public class TestAppListener :XFG.AppListener
     {
         XFG.Gfx.Texture tex;
         SpriteBatch batch;
         public void Create()
         {
             batch = new SpriteBatch();
-            tex = new XFG.Gfx.Texture("./Assets/images.png");
+           
+            tex = new XFG.Gfx.Texture("Assets/images.png");
 
             XFG.Input.OnMouseMove += Input_OnMouseMove;
 			XFG.Graphics.OnResize += (int width, int height) => {

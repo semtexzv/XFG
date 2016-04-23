@@ -7,26 +7,18 @@ using Android.Widget;
 using Android.OS;
 using XFG;
 using Android.Opengl;
+using TestApp;
 
 namespace App1
 {
     [Activity(Label = "App1", MainLauncher = true, Icon = "@drawable/icon")]
-    public class MainActivity : Activity
+    public class MainActivity : AndroidApplication
     {
-        private SurfaceView surface;
         protected override void OnCreate(Bundle bundle)
         {
-            
             base.OnCreate(bundle);
-           
-            View view = LayoutInflater.Inflate(Resource.Layout.Main,null);
-
-            // Set our view from the "main" layout resource
-            SetContentView(view);
-
-            LinearLayout lin = (LinearLayout)view.FindViewById(Resource.Id.test);
-            lin.AddView(new XFG.XfgGLSView(this,DisplayFormat.RGB888));
-            
+            Init(new AndroidApplicationConfig(), new TestAppListener());
+          
             
         }
     }

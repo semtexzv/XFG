@@ -18,8 +18,7 @@ namespace TestApp
             conf.Width = 500;
             conf.Height = 500;
             XFG.Logger.OnMessage += (a, b) => { Console.WriteLine(a); };
-            XFG.Desktop.Init(conf);
-            XFG.Desktop.Run(new TestAppListener());
+            XFG.Desktop.Init(conf, new TestAppListener());
         }
     }
 }

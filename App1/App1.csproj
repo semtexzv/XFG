@@ -66,6 +66,10 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Test.core\Test.core.csproj">
+      <Project>{d1ef57a9-342d-4599-9ebd-09c6eab7e617}</Project>
+      <Name>Test.core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XFG.Android\XFG.Android.csproj">
       <Project>{5b8b5bf7-9266-496f-8ec0-1c6bac956ab1}</Project>
       <Name>XFG.Android</Name>
@@ -75,8 +79,11 @@
       <Name>XFG.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Assets\" />
+    <Content Include="Assets\images.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -17,6 +17,7 @@ namespace XFG.Platform
         void SetMode(DisplayMode mode);
         int Width { get; }
         int Height { get; }
+        float Delta { get; }
         void Hide();
         void Show();
 

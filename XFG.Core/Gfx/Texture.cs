@@ -47,8 +47,6 @@ namespace XFG.Gfx
             UploadParams();
         }
 
-
-
         public TextureMinFilter MinFilter
         {
             get
@@ -128,7 +126,6 @@ namespace XFG.Gfx
                 GL.BindTexture(TextureTarget.TEXTURE_2D, Handle);
             }
         }
-        private static Texture bound;
         private static Texture[] binds = new Texture[16];
         
         public static List<TextureLoader> Loaders = new List<TextureLoader>() 

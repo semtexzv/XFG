@@ -7,6 +7,7 @@ namespace XFG.Glfw
 {
 	public class GlfwDisplay : IDisplay,IInput
 	{
+        private float delta;
 		IntPtr _win;
         private WindowSizeFun _resize_cb;
         private KeyFun _key_cb;
@@ -99,7 +100,8 @@ namespace XFG.Glfw
 			resize_cb (_win, w, h);
 			while (Glfw.WindowShouldClose (_win) != 1) {
 				double newTime = Glfw.GetTime ();
-				app.Render ((float)(newTime - time));
+                delta = (float)(newTime - time);
+                app.Render (delta);
 				Glfw.SwapBuffers (_win);
 				Glfw.PollEvents ();
 				time = newTime;
@@ -146,11 +148,19 @@ namespace XFG.Glfw
 			}
 		}
 
-		#endregion
+        public float Delta
+        {
+            get
+            {
+                return delta;
+            }
+        }
 
-		#region IInput implementation
+        #endregion
 
-		public event OnKeyDelegate OnKeyDown;
+        #region IInput implementation
+
+        public event OnKeyDelegate OnKeyDown;
 
 		public event OnKeyDelegate OnKeyUp;
 

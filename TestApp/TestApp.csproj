@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestAppListener.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -54,6 +53,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Test.core\Test.core.csproj">
+      <Project>{d1ef57a9-342d-4599-9ebd-09c6eab7e617}</Project>
+      <Name>Test.core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XFG.Core\XFG.Core.csproj">
       <Project>{e268a360-ac0b-4b3e-b2dd-0d9ad2308fae}</Project>
       <Name>XFG.Core</Name>

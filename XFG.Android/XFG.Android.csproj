@@ -43,9 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AndroidApplication.cs" />
+    <Compile Include="AndroidApplicationConfig.cs" />
+    <Compile Include="AndroidDisplay.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XfgGLSView.cs" />
+    <Compile Include="XfgEglConfigChooser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

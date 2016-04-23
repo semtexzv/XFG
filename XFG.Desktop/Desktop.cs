@@ -13,31 +13,16 @@ namespace XFG
    public static class Desktop
     {
 
-        private static IPlatform Platform = null;
-        public static void Init(AppConfig conf)
+        private static GlfwPlatform Platform = null;
+        public static void Init(AppConfig conf,AppListener listener)
         {
             PlatformType type = getPlatformType();
-            switch (type)
-            {
-                case PlatformType.Windows:
-                case PlatformType.Linux:
-                case PlatformType.OSX:
-                case PlatformType.Unix:
-                    Platform = new GlfwPlatform();
-                    break;
-                default:
-                    throw new Exception("Unsupported platform");
-            }
+            Platform = new GlfwPlatform();
             Platform.Init(conf);
             XFG.Config.InitPlatform(type,Platform);
-        }
-        public static void Run(AppListener listener)
-        {
             listener.Create();
-
             Platform.Run(listener);
         }
-
         private static PlatformType getPlatformType()
         {
             var platform = PlatformType.Unknown;
