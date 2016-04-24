@@ -17,7 +17,7 @@ namespace TestApp
         {
             batch = new SpriteBatch();
            
-            tex = new XFG.Gfx.Texture("Assets/images.png");
+            tex = new XFG.Gfx.Texture(Files.Internal("images.png"));
 
             XFG.Input.OnMouseMove += Input_OnMouseMove;
 			XFG.Graphics.OnResize += (int width, int height) => {

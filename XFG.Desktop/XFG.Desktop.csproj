@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="DesktopAppConfig.cs" />
     <Compile Include="Desktop.cs" />
+    <Compile Include="DesktopFiles.cs" />
     <Compile Include="Glfw\Glfw.cs" />
     <Compile Include="Glfw\GlfwDisplay.cs" />
     <Compile Include="Glfw\GlfwPlatform.cs" />

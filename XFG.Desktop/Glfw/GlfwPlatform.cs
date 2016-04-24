@@ -6,6 +6,7 @@ namespace XFG.Glfw
 	internal class GlfwPlatform : IPlatform
 	{
 		private GlfwDisplay _display;
+        private XFG.DesktopFiles files;
 		public GlfwPlatform ()
 		{
 			
@@ -16,6 +17,7 @@ namespace XFG.Glfw
 		public void Init (AppConfig config)
 		{
 			_display = new GlfwDisplay (config);
+            files = new XFG.DesktopFiles();
 		}
 
 
@@ -43,7 +45,15 @@ namespace XFG.Glfw
 			}
 		}
 
-		#endregion
-	}
+        IFiles IPlatform.Files
+        {
+            get
+            {
+                return files;
+            }
+        }
+
+        #endregion
+    }
 }
 

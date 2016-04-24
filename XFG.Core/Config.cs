@@ -28,6 +28,7 @@ namespace XFG
                 Audio.SetPlatform(platform.Audio);
                 Graphics.SetPlatform(platform.Display);
                 Input.SetPlatform(platform.Input);
+                Files.SetPlatform(platform.Files);
             }
         }
     }

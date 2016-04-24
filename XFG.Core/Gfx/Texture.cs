@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using XFG.OpenGL;
-using XFG.Gfx.Loaders;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Drawing;
@@ -15,38 +14,25 @@ namespace XFG.Gfx
     public class Texture
     {
         public int Handle;
-        private string Filename;
         public int Unit = 0;
         TextureMinFilter _minFilter = TextureMinFilter.LINEAR;
         TextureMagFilter _magFilter = TextureMagFilter.NEAREST;
         TextureWrapMode _wrapS = TextureWrapMode.CLAMP_TO_EDGE;
         TextureWrapMode _wrapT = TextureWrapMode.CLAMP_TO_EDGE;
 
-        public Texture(string filename, int unit = 0)
+        public Texture(IFileHandle file)
         {
-            Unit = unit;
-            Filename = filename;
-            if (!File.Exists(filename))
-            {
-               throw new ArgumentException("Could not create Texture,invalid filename:"+filename);
-            }
-            for (int i = Loaders.Count - 1; i >= 0; i--)
-            {
-                var load = Loaders[i];
-                if (load.CanLoad(filename))
-                {
-                    Handle = GL.GenTexture();
-                    load = load.Create(filename);
-                    GL.BindTexture(TextureTarget.TEXTURE_2D, Handle);
-                    load.Load();
-                    Width = load.Width;
-                    Height = load.Height;
-                   
-                }
-            }
+            Handle = GL.GenTexture();
+            
+            Rectangle rect = new Rectangle(0, 0, image.Width, image.Height);
+            var data = image.LockBits(rect, ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+            GL.BindTexture(TextureTarget.TEXTURE_2D, Handle);
+            GL.TexImage2D(TextureTarget.TEXTURE_2D, 0, InternalPixelFormat.RGBA, Width, Height, 0, OpenGL.PixelFormat.RGBA, PixelType.UNSIGNED_BYTE, data.Scan0);
+            image.UnlockBits(data);
+            image.Dispose();
             UploadParams();
-        }
 
+        }
         public TextureMinFilter MinFilter
         {
             get
@@ -128,10 +114,7 @@ namespace XFG.Gfx
         }
         private static Texture[] binds = new Texture[16];
         
-        public static List<TextureLoader> Loaders = new List<TextureLoader>() 
-        {
-            new PngLoader(""),
-        };
+      
         
     }
 }
