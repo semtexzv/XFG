@@ -16,37 +16,42 @@ namespace TestApp
         public void Create()
         {
             batch = new SpriteBatch();
+            GL.Enable(EnableCap.BLEND);
+            GL.BlendFunc(BlendingFactor.SRC_ALPHA, BlendingFactor.ONE_MINUS_SRC_ALPHA);
+
+            Graphics.SetVSync(true);
            
-            tex = new XFG.Gfx.Texture(Files.Internal("images.png"));
+            tex = new Texture(Files.Internal("image.png"));
 
-            XFG.Input.OnMouseMove += Input_OnMouseMove;
-			XFG.Graphics.OnResize += (int width, int height) => {
-				batch.View = Matrix4.Ortho(width,height);
-			
-			};
-			XFG.Input.OnKeyDown += (key, mods) => {
-				Logger.Debug("KeyDown {0} , {1}",key,mods);
-
-			};
-			XFG.Input.OnMouseDown += (button) => {
-				Logger.Debug("Mouse {0}",button);
-			};
-			XFG.Input.OnScroll += (amount) => {
-				Logger.Debug("Scroll {0}",amount);
-			};
+            Input.OnMouseMove += Input_OnMouseMove;
+            Graphics.OnResize += (int width, int height) =>
+            {
+                batch.View = Matrix4.Ortho(width, height);
+            };
+            Input.OnKeyDown += (key, mods) =>
+            {
+                Logger.Debug("KeyDown {0} , {1}", key, mods);
+            };
+            Input.OnMouseDown += (button) => {
+                Logger.Debug("Mouse {0}",button);
+            };
+            Input.OnScroll += (amount) => {
+                Logger.Debug("Scroll {0}",amount);
+            };
         }
 
         private void Input_OnMouseMove(int x, int y)
         {
             Logger.Log("{0},{1},", x, y);
         }
-		float time = 0;
+        float time = 0;
         public void Render(float delta)
         {
-			time += delta;
+            time += delta;
             GL.ClearColor(0, 1, 1, 0.5f);
             GL.Clear(ClearBufferMask.ALL);
-			batch.Draw(tex, 0, 0, XFG.Graphics.Width/2,Graphics.Width/2,time);
+            float dim = XFG.MathUtils.Math.Min(Graphics.Width, Graphics.Height);
+            batch.Draw(tex, 0, 0, dim,dim,-time);
             batch.Flush();
         }
 

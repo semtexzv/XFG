@@ -48,11 +48,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\images.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Test.core\Test.core.csproj">
       <Project>{d1ef57a9-342d-4599-9ebd-09c6eab7e617}</Project>
       <Name>Test.core</Name>
@@ -65,6 +60,12 @@
       <Project>{496553a1-952e-4992-8e6f-e8adcd4fdc02}</Project>
       <Name>XFG.Desktop</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\App1\Assets\image.png">
+      <Link>Assets\image.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

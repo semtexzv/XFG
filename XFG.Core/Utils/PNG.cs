@@ -574,7 +574,8 @@ namespace XFG.Utils
                         }
                         break;
                     default:
-                        throw new IOException("invalid filter type in scanline: " + curLine[0]);
+                        break;
+                        //throw new IOException("invalid filter type in scanline: " + curLine[0]);
                 }
             }
         }
@@ -592,8 +593,7 @@ namespace XFG.Utils
                     buffer = dataStream.Buffer;
                     dataStream.Buffer = tmp;
                     dataStream.Position = 0;
-                    
-                    new Task(DataRead).Start();
+                    DataRead();
                 }
                 int now = decompressStream.Read(scanline, read, scanline.Length - read);
                 read += now;
