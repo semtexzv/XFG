@@ -12,5 +12,6 @@ namespace XFG.Platform
         IAudio Audio { get; }
         IDisplay Display { get; }
         IInput Input { get; }
+        IFiles Files { get; }
     }
 }

@@ -45,15 +45,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppListener.cs" />
-    <Compile Include="Assets\AssetLoader.cs" />
-    <Compile Include="Assets\AssetManager.cs" />
     <Compile Include="Audio.cs" />
     <Compile Include="Audiolib\IAudioDevice.cs" />
     <Compile Include="Audiolib\IMusic.cs" />
     <Compile Include="Audiolib\ISound.cs" />
+    <Compile Include="Files.cs" />
+    <Compile Include="IFileHandle.cs" />
     <Compile Include="OpenGL\DisplayMode.cs" />
     <Compile Include="Platform\IAudio.cs" />
     <Compile Include="Platform\IDisplay.cs" />
+    <Compile Include="Platform\IFiles.cs" />
     <Compile Include="Platform\IInput.cs" />
     <Compile Include="Platform\IPlatform.cs" />
     <Compile Include="Config.cs" />
@@ -96,7 +97,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
 </Project>
