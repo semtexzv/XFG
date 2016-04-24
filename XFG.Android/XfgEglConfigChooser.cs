@@ -38,7 +38,7 @@ namespace XFG
                 EGL10.EglDepthSize, format.Depth,
                 EGL10.EglSampleBuffers, format.SampleBuffers,
                 EGL10.EglSamples,format.Samples,
-                EGL10.EglRenderableType, EGL_OPENGL_ES2_BIT,
+                EGL10.EglRenderableType, EGL14.EglOpenglEs2Bit,
                 EGL10.EglNone
             };
             if (!egl.EglChooseConfig(display, configAttribs, configs, 1, num_config))

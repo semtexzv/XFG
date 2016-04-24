@@ -52,7 +52,10 @@ namespace XFG
         /// <param name="args"></param>
         public static void Verbose(string format, params object[] args)
         {
-            Log(LogType.Verbose, format, args);
+            if (args.Length > 0)
+                Log(LogType.Verbose, format, args);
+            else
+                Log(LogType.Verbose, format);
         }
         /// <summary>
         /// Logs a message using debug priority setting.
@@ -61,7 +64,10 @@ namespace XFG
         /// <param name="args"></param>
         public static void Debug(string format, params object[] args)
         {
-            Log(LogType.Debug, format, args);
+            if (args.Length > 0)
+                Log(LogType.Debug, format, args);
+            else
+                Log(LogType.Debug, format);
         }
         /// <summary>
         /// Logs a message using standard priority setting.
@@ -70,7 +76,11 @@ namespace XFG
         /// <param name="args"></param>
         public static void Log(string format,params object[] args)
         {
-            Log(LogType.Info, format, args);
+
+            if (args.Length > 0)
+                Log(LogType.Info, format, args);
+            else
+                Log(LogType.Info, format);
         }
         /// <summary>
         /// Logs a message using warning priority setting.
@@ -79,7 +89,10 @@ namespace XFG
         /// <param name="args"></param>
         public static void Warning(string format, params object[] args)
         {
-            Log(LogType.Warn, format, args);
+            if (args.Length > 0)
+                Log(LogType.Warn, format, args);
+            else
+                Log(LogType.Warn, format);
         }
         /// <summary>
         /// Logs a message using high priority setting.
@@ -88,7 +101,10 @@ namespace XFG
         /// <param name="args"></param>
         public static void Error(string format, params object[] args)
         {
-            Log(LogType.Error, format, args);
+            if (args.Length > 0)
+                Log(LogType.Error, format, args);
+            else
+                Log(LogType.Error, format);
         }
         /// <summary>
         /// Logs a message using highest priority setting.
@@ -97,7 +113,10 @@ namespace XFG
         /// <param name="args"></param>
         public static void Fatal(string format, params object[] args)
         {
-            Log(LogType.Fatal, format, args);
+            if (args.Length > 0)
+                Log(LogType.Fatal, format, args);
+            else
+                Log(LogType.Fatal, format);
         }
     }
 }

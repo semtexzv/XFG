@@ -43,6 +43,7 @@ namespace XFG
             GLSurfaceView.IEGLConfigChooser configChooser = new XfgEglConfigChooser(format);
 
             view = new GLSurfaceView(application.ApplicationContext);
+            view.SetEGLContextClientVersion(2);
             view.SetEGLConfigChooser(configChooser);
 
             view.SetRenderer(this);
@@ -104,8 +105,9 @@ namespace XFG
         {
             long ticks = sw.ElapsedTicks;
 
-            deltaTime = (ticks - lastTicks) / Stopwatch.Frequency;
+            deltaTime = ((float)(ticks - lastTicks)) / Stopwatch.Frequency;
             application.listener.Render(Delta);
+            lastTicks = ticks;
         }
 
         void GLSurfaceView.IRenderer.OnSurfaceChanged(IGL10 gl, int width, int height)

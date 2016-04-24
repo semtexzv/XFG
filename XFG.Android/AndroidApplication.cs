@@ -26,6 +26,8 @@ namespace XFG
         /// <param name="config">Application configuration</param>
         public void Init(AndroidApplicationConfig config,AppListener listener)
         {
+            RequestWindowFeature(WindowFeatures.NoTitle);
+
             this.listener = listener;
             display = new AndroidDisplay(this,config);
             files = new AndroidFiles(this);
