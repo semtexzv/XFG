@@ -63,7 +63,9 @@ namespace XFG.Gfx
             GL.CompileShader(VertexHandle);
             if (GL.GetShaderiv(VertexHandle, ShaderParam.COMPILE_STATUS) == 0)
             {
-                Logger.Debug("Could not compile vertex shader:\n" + GL.GetShaderInfoLog(VertexHandle));
+                // Logger.Error("Could not compile vertex shader:\n" + GL.GetShaderInfoLog(VertexHandle));
+                Logger.Error(VertexSource);
+                Logger.Error("Could not compile vertex shader:\n{0}", GL.GetShaderInfoLog(FragmentHandle));
                 GL.DeleteShader(VertexHandle);
                 VertexHandle = 0;
                 return false;
@@ -82,7 +84,8 @@ namespace XFG.Gfx
             GL.CompileShader(FragmentHandle);
             if (GL.GetShaderiv(FragmentHandle, ShaderParam.COMPILE_STATUS) == 0)
             {
-                Logger.Debug("Could not compile Fragment shader:\n" + GL.GetShaderInfoLog(FragmentHandle));
+                Logger.Error(FragmentSource);
+                Logger.Error("Could not compile Fragment shader:\n{0}", GL.GetShaderInfoLog(FragmentHandle));
                 GL.DeleteShader(FragmentHandle);
                 FragmentHandle = 0;
                 return false;
@@ -97,9 +100,13 @@ namespace XFG.Gfx
             
             GL.LinkProgram(ProgramHandle);
 
+            
             if (GL.GetProgramiv(ProgramHandle, ProgramInfoParam.LINK_STATUS) == 0)
             {
-                Logger.Debug("Could not link program:\n|" + GL.GetProgramInfoLog(ProgramHandle) + "|" + GL.GetError());
+                Logger.Log(LogType.Error, VertexSource);
+                Logger.Log(LogType.Error, FragmentSource);
+                
+                Logger.Error("Could not link program:\n|{0}", GL.GetProgramInfoLog(ProgramHandle));
                 res = false;
             }
             else

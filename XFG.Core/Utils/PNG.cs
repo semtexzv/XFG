@@ -146,7 +146,7 @@ namespace XFG.Utils
         private int BitDepth = 0;
         private int BitsPerPixel = 0;
         private PNGColorType ColorType;
-        private FileStream file;
+        private Stream file;
         private byte[] buffer;
         private byte[] Palette;
         private byte[] APalette;
@@ -168,11 +168,9 @@ namespace XFG.Utils
         /// Creates new PNG reader, that will read data from provided file
         /// </summary>
         /// <param name="filename"></param>
-        public PNG(string filename)
+        public PNG(IFileHandle fileHandle)
         {
-            if (!File.Exists(filename))
-                throw new FileNotFoundException();
-            file = File.OpenRead(filename);
+            file = fileHandle.Reader;
             buffer = new byte[8192];
             file.Read(buffer, 0, SIGNATURE.Length);
             if (!Compare(buffer, 0, SIGNATURE, 0, SIGNATURE.Length))
@@ -195,13 +193,13 @@ namespace XFG.Utils
                 {
                     if (ChunkUnread > 0)
                     {
+                        byte[] dump = new byte[4];
                         //If it is unknown chunk with that is bigger than buffer, we just dump the data.
-                        file.Seek(ChunkUnread + 4, SeekOrigin.Current);
+                        file.Read(dump, 0, 4);
                         ChunkUnread = 0;
                     }
                 }
             }
-            DataBegin = file.Position - 8;
         }
         /// <summary>
         /// Reads numLines from file and puts in buffer, useful for loading image by parts
@@ -210,16 +208,11 @@ namespace XFG.Utils
         /// <param name="numLines"></param>
         public void ReadScanlinesRGBA(ref byte[] result, int numLines)
         {
+            byte[] dump = new byte[64];
             if (firstRead)
             {
-                file.Seek(DataBegin, SeekOrigin.Begin);
-                ChunkLength = 0;
-                ChunkUnread = 0;
-                chunkType = ChunkType.IHDR;
-                ReadChunkHeader();
-                while (chunkType != ChunkType.IDAT)
-                    ReadChunk();
-                file.Seek(2, SeekOrigin.Current);
+                // Throw away the checksum
+                file.Read(dump, 0, 2);
                 ChunkLength -= 2;
                 ChunkUnread -= 2;
                 firstRead = false;
@@ -364,7 +357,10 @@ namespace XFG.Utils
         {
             if(ChunkUnread==0)
             {
-                file.Seek(4, SeekOrigin.Current);
+                byte[] dump = new byte[4];
+                //If it is unknown chunk with that is bigger than buffer, we just dump the data.
+                file.Read(dump, 0, 4);
+               // file.Seek(4, SeekOrigin.Current);
             }
         }
         private byte[] metaData = new byte[8];

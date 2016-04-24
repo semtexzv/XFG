@@ -131,7 +131,8 @@ namespace XFG
                 return eglGetProcAddress(name);
             });
 
+            application.listener.Create();
+
         }
-        
     }
 }

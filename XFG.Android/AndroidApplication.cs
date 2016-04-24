@@ -17,6 +17,7 @@ namespace XFG
     {
         public AppListener listener;
         private AndroidDisplay display;
+        private AndroidFiles files;
 
         /// <summary>
         /// This method should be called on <see cref="Activity.OnCreate(Bundle)"/> in order to initialize all
@@ -27,6 +28,7 @@ namespace XFG
         {
             this.listener = listener;
             display = new AndroidDisplay(this,config);
+            files = new AndroidFiles(this);
             XFG.Config.InitPlatform(PlatformType.Android, this);
             SetContentView(display.view);
         }
@@ -51,9 +53,16 @@ namespace XFG
         {
             get
             {
-                return null;
+                return new AndroidInput();
             }
         }
-        
+
+        IFiles IPlatform.Files
+        {
+            get
+            {
+                return files;
+            }
+        }
     }
 }

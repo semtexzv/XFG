@@ -8,6 +8,7 @@ using Android.OS;
 using XFG;
 using Android.Opengl;
 using TestApp;
+using Android.Util;
 
 namespace App1
 {
@@ -17,7 +18,13 @@ namespace App1
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            Init(new AndroidApplicationConfig(), new TestAppListener());
+            AndroidApplicationConfig conf = new AndroidApplicationConfig();
+            conf.displayFormat = DisplayFormat.RGB888;
+            Init(conf, new TestAppListener());
+            Logger.OnMessage += (msg, type) =>
+            {
+                Log.WriteLine((LogPriority)type, "TEST", msg);
+            };
           
             
         }

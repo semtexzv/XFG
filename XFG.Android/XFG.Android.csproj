@@ -46,6 +46,8 @@
     <Compile Include="AndroidApplication.cs" />
     <Compile Include="AndroidApplicationConfig.cs" />
     <Compile Include="AndroidDisplay.cs" />
+    <Compile Include="AndroidFiles.cs" />
+    <Compile Include="AndroidInput.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XfgEglConfigChooser.cs" />

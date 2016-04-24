@@ -29,10 +29,21 @@ namespace XFG
         /// <param name="type">Log type</param>
         /// <param name="format">Message, can contain tokens that should by replace by args</param>
         /// <param name="args">args, passed along with message to String.Format</param>
-        public static void Log(LogType type, string format,params object[] args)
+        public static void Log(LogType type, string format, params object[] args)
         {
             if (OnMessage != null)
-                OnMessage(String.Format(format, args),type);
+                OnMessage(String.Format(format, args), type);
+        }
+        /// <summary>
+         /// Log a message using specified log type
+         /// </summary>
+         /// <param name="type">Log type</param>
+         /// <param name="format">Message, can contain tokens that should by replace by args</param>
+         /// <param name="args">args, passed along with message to String.Format</param>
+        public static void Log(LogType type, string format)
+        {
+            if (OnMessage != null)
+                OnMessage(format, type);
         }
         /// <summary>
         /// Logs a message using lowest priority setting.

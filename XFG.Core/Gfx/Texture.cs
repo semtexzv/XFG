@@ -8,6 +8,8 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Drawing;
 using System.Drawing.Imaging;
+using XFG.Utils;
+using System.Runtime.InteropServices;
 
 namespace XFG.Gfx
 {
@@ -23,13 +25,21 @@ namespace XFG.Gfx
         public Texture(IFileHandle file)
         {
             Handle = GL.GenTexture();
-            
-            Rectangle rect = new Rectangle(0, 0, image.Width, image.Height);
-            var data = image.LockBits(rect, ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
             GL.BindTexture(TextureTarget.TEXTURE_2D, Handle);
-            GL.TexImage2D(TextureTarget.TEXTURE_2D, 0, InternalPixelFormat.RGBA, Width, Height, 0, OpenGL.PixelFormat.RGBA, PixelType.UNSIGNED_BYTE, data.Scan0);
-            image.UnlockBits(data);
-            image.Dispose();
+            PNG png = new PNG(file);
+            Width = png.Width;
+            Height = png.Height;
+            byte[] res = new byte[Width * Height * 4];
+            png.ReadScanlinesRGBA(ref res, Height);
+            try
+            {
+                IntPtr add = Marshal.UnsafeAddrOfPinnedArrayElement(res, 0);
+                GL.TexImage2D(TextureTarget.TEXTURE_2D, 0, InternalPixelFormat.RGBA, Width, Height, 0, OpenGL.PixelFormat.RGBA, PixelType.UNSIGNED_BYTE, add);
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e.Message);
+            }
             UploadParams();
 
         }

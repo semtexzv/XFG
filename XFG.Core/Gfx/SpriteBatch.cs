@@ -136,6 +136,7 @@ namespace XFG.Gfx
 
           Program = new ShaderProgram(
 @"
+#version 100
 attribute vec2 a_pos;
 attribute vec2 a_tex;
 attribute vec4 a_col;
@@ -150,18 +151,17 @@ void main()
     v_col=a_col;
     gl_Position = u_projTrans*vec4(a_pos,0.0,1.0);
 }
-",
+",  
 
 
 @"
+#version 100
 #ifdef GL_ES
-#define LOWP lowp
+#define LOWP 
 precision mediump float;
 #else
 #define LOWP
 #endif
-
-
 varying vec2 v_tex;
 varying LOWP vec4 v_col;
 
